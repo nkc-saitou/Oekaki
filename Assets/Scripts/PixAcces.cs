@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PixAcces : MonoBehaviour
 {
-    [SerializeField]
+    //[SerializeField]
     Renderer renderer;
     [SerializeField]
     Color[] penColor;
@@ -17,6 +17,8 @@ public class PixAcces : MonoBehaviour
 
     void Start()
     {
+        renderer = GetComponent<Renderer>();
+
         Texture2D mainTexture = (Texture2D)renderer.material.mainTexture;
         Color[] pixels = mainTexture.GetPixels();
 
@@ -35,7 +37,9 @@ public class PixAcces : MonoBehaviour
             {
                 if ((p - new Vector2(x, y)).magnitude < 5)
                 {
-                    buffer.SetValue(penColor[colorCnt], x + 256 * y);
+                    Color cccc = penColor[colorCnt];
+                    cccc.a = buffer[x + 256 * y].a;
+                    buffer.SetValue(cccc, x + 256 * y);
                 }
             }
         }
@@ -57,15 +61,17 @@ public class PixAcces : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            
+
             TimerCount();
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
-                Draw(hit.textureCoord * 256);
+                if (gameObject.GetInstanceID() == hit.collider.gameObject.GetInstanceID())
+                    Draw(hit.textureCoord * 256);
             }
+
 
             drawTexture.SetPixels(buffer);
             drawTexture.Apply();
