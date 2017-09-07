@@ -72,7 +72,6 @@ public class PixAcces : MonoBehaviour
                     Draw(hit.textureCoord * 256);
             }
 
-
             drawTexture.SetPixels(buffer);
             drawTexture.Apply();
             renderer.material.mainTexture = drawTexture;

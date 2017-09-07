@@ -81,13 +81,18 @@ public class SpriteMove : MonoBehaviour {
         if (pixelsPaint < 70) return;
 
         float dx = 0;
-        float speed = 0.5f;
+        float speed = 15.0f;
+
+        float border = 20;
 
         objPos = gameObject.transform.localPosition;
         dx += speed * Time.deltaTime;
         objPos.x += dx;
         gameObject.transform.localPosition = objPos;
 
-
+        if(objPos.x > border)
+        {
+            Destroy(gameObject);
+        }
     }
 }

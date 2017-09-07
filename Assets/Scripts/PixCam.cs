@@ -7,7 +7,22 @@ public class PixCam : MonoBehaviour
     Texture2D texture2D;
     RenderTexture renderTexture;
 
-    int GetPixel()
+    int camPixels = 0;
+    int filstCamPixels = 0;
+
+    public int FilstCamPixels
+    {
+        get { return filstCamPixels; }
+        set { filstCamPixels = value; }
+    }
+
+    public int CamPixels
+    {
+        get { return camPixels; }
+        set { camPixels = value; }
+    }
+
+    int GetPixels()
     {
         texture2D = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
         renderTexture = new RenderTexture(texture2D.width, texture2D.height, 24);
@@ -36,11 +51,18 @@ public class PixCam : MonoBehaviour
         return count;
     }
 
-    private void Update()
+    void Start()
+    {
+        filstCamPixels = GetPixels();
+        camPixels = GetPixels();
+    }
+
+    void Update()
     {
         if (Input.GetButtonUp("Fire1"))
         {
-            Debug.Log("グレースケールピクセルの数" + GetPixel());
+            camPixels = GetPixels();
+            //Debug.Log("グレースケールピクセルの数" + camPixels);
         }
     }
 }
