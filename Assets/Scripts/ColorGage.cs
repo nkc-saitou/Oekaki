@@ -75,7 +75,7 @@ public class ColorGage : MonoBehaviour
     //  メソッド
     //-------------------------------------------------------------------------
 
-    public void ChangeColor(int colorNo)
+    void ChangeColor(int colorNo)
     {
         selectNo = colorNo;
         //ペンの色変更
