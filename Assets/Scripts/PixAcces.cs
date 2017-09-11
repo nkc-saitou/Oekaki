@@ -8,12 +8,10 @@ public class PixAcces : MonoBehaviour
     Renderer renderer;
     
     public static Color penColor;
+    public static bool isPenUse;
 
     Texture2D drawTexture;
     Color[] buffer;
-
-    float timer = 0;
-    int colorCnt = 0;
 
     void Start()
     {
@@ -45,25 +43,10 @@ public class PixAcces : MonoBehaviour
         }
     }
 
-    //void TimerCount()
-    //{
-    //    timer += Time.deltaTime;
-
-    //    if (timer >= 1.0f)
-    //    {
-
-    //        colorCnt = (int)Mathf.Repeat(colorCnt + 1, penColor.Length);
-    //        timer = 0.0f;
-    //    }
-    //}
-
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && isPenUse)
         {
-
-            //TimerCount();
-
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100.0f))
