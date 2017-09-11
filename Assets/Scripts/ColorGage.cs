@@ -67,10 +67,10 @@ public class ColorGage : MonoBehaviour
     }
 
     //-------------------------------------------------------------------------
-    //  メソッド
+    //  Button
     //-------------------------------------------------------------------------
 
-    void ChangeColor(int colorNo)
+    public void ChangeColor(int colorNo)
     {
         selectNo = colorNo;
         //ペンの色変更
@@ -79,6 +79,15 @@ public class ColorGage : MonoBehaviour
 
         timer = 0;
     }
+
+    public void ChangeCollection()
+    {
+        
+    }
+
+    //-------------------------------------------------------------------------
+    //  ゲージ回復
+    //-------------------------------------------------------------------------
 
     public void GageHeal(int select,int num)
     {
