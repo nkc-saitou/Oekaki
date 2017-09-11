@@ -6,8 +6,8 @@ public class PixAcces : MonoBehaviour
 {
     //[SerializeField]
     Renderer renderer;
-    [SerializeField]
-    Color[] penColor;
+    
+    public static Color penColor;
 
     Texture2D drawTexture;
     Color[] buffer;
@@ -37,7 +37,7 @@ public class PixAcces : MonoBehaviour
             {
                 if ((p - new Vector2(x, y)).magnitude < 5)
                 {
-                    Color cccc = penColor[colorCnt];
+                    Color cccc = penColor;
                     cccc.a = buffer[x + 256 * y].a;
                     buffer.SetValue(cccc, x + 256 * y);
                 }
@@ -45,24 +45,24 @@ public class PixAcces : MonoBehaviour
         }
     }
 
-    void TimerCount()
-    {
-        timer += Time.deltaTime;
+    //void TimerCount()
+    //{
+    //    timer += Time.deltaTime;
 
-        if (timer >= 1.0f)
-        {
+    //    if (timer >= 1.0f)
+    //    {
 
-            colorCnt = (int)Mathf.Repeat(colorCnt + 1, penColor.Length);
-            timer = 0.0f;
-        }
-    }
+    //        colorCnt = (int)Mathf.Repeat(colorCnt + 1, penColor.Length);
+    //        timer = 0.0f;
+    //    }
+    //}
 
     void Update()
     {
         if (Input.GetMouseButton(0))
         {
 
-            TimerCount();
+            //TimerCount();
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
