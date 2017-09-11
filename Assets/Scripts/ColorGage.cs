@@ -23,9 +23,7 @@ public class ColorGage : MonoBehaviour
 
     float timer = 0;
 	
-    //-------------------------------------------------------------------------
-    //  Start
-    //-------------------------------------------------------------------------
+    //=========================================================================
 
 	void Start ()
     {
@@ -48,10 +46,6 @@ public class ColorGage : MonoBehaviour
 
         ChangeColor(0);
 	}
-	
-    //-------------------------------------------------------------------------
-    //  Update
-    //-------------------------------------------------------------------------
 
     void Update()
     {
@@ -61,6 +55,7 @@ public class ColorGage : MonoBehaviour
 
             if(timer >= 0.2f)
             {
+                //ゲージ減少
                 penGageNum[selectNo]--;
                 gageArr[selectNo].sizeDelta = new Vector2(penGageNum[selectNo], 20);
                 timer = 0;
@@ -83,5 +78,11 @@ public class ColorGage : MonoBehaviour
         PixAcces.isPenUse = (penGageNum[colorNo] != 0);
 
         timer = 0;
+    }
+
+    public void GageHeal(int select,int num)
+    {
+        //ゲージ回復
+        penGageNum[select] = Mathf.Max(100, penGageNum[select] + num);
     }
 }

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PixAcces : MonoBehaviour
 {
+    //-------------------------------------------------------------------------
+    //  Private
+    //-------------------------------------------------------------------------
+
     //[SerializeField]
     Renderer renderer;
     
@@ -12,6 +16,8 @@ public class PixAcces : MonoBehaviour
 
     Texture2D drawTexture;
     Color[] buffer;
+
+    //=========================================================================
 
     void Start()
     {
@@ -25,22 +31,6 @@ public class PixAcces : MonoBehaviour
 
         drawTexture = new Texture2D(mainTexture.width, mainTexture.height, TextureFormat.RGBA32, false);
         drawTexture.filterMode = FilterMode.Point;
-    }
-
-    public void Draw(Vector2 p)
-    {
-        for (int x = 0; x < 256; x++)
-        {
-            for (int y = 0; y < 256; y++)
-            {
-                if ((p - new Vector2(x, y)).magnitude < 5)
-                {
-                    Color cccc = penColor;
-                    cccc.a = buffer[x + 256 * y].a;
-                    buffer.SetValue(cccc, x + 256 * y);
-                }
-            }
-        }
     }
 
     void Update()
@@ -58,6 +48,26 @@ public class PixAcces : MonoBehaviour
             drawTexture.SetPixels(buffer);
             drawTexture.Apply();
             renderer.material.mainTexture = drawTexture;
+        }
+    }
+
+    //-------------------------------------------------------------------------
+    //  Draw
+    //-------------------------------------------------------------------------
+
+    public void Draw(Vector2 p)
+    {
+        for (int x = 0; x < 256; x++)
+        {
+            for (int y = 0; y < 256; y++)
+            {
+                if ((p - new Vector2(x, y)).magnitude < 5)
+                {
+                    Color cccc = penColor;
+                    cccc.a = buffer[x + 256 * y].a;
+                    buffer.SetValue(cccc, x + 256 * y);
+                }
+            }
         }
     }
 }
