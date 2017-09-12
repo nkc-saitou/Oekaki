@@ -84,7 +84,7 @@ public class PixAcces : MonoBehaviour
             {
                 if ((p - new Vector2(x, y)).magnitude < 5)
                 {
-                    Color cccc = penColor;
+                    Color cccc = (buffer[x + 256 * y] == Color.black) ? Color.black : penColor;
                     cccc.a = buffer[x + 256 * y].a;
                     buffer.SetValue(cccc, x + 256 * y);
                 }
