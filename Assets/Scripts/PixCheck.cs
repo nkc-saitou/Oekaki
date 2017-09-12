@@ -15,22 +15,17 @@ public class PixCheck : MonoBehaviour {
     int whitePixels = 0; //現在の白ピクセル数を保存
     int filstWhitePixels = 0; //一番最初の白ピクセルを保存
 
+    int pixelsPaint = 0; //全体の何パーセント塗れたのか
+
     //------------------------------------------------
     // プロパティ
     //------------------------------------------------
 
-    //一番最初の白ピクセルを渡すプロパティ
-    public int FilstWhitePixels
+    //全体の何パーセント塗れているかを渡すプロパティ
+    public int PixelsPaint
     {
-        get { return filstWhitePixels; }
-        set { filstWhitePixels = value; }
-    }
-
-    //現在白ピクセルを渡すプロパティ
-    public int WhitePixels
-    {
-        get { return whitePixels; }
-        set { whitePixels = value; }
+        get { return pixelsPaint; }
+        set { pixelsPaint = value; }
     }
 
     //==================================================
@@ -39,7 +34,6 @@ public class PixCheck : MonoBehaviour {
     {
         whitePixelsCheck();
         filstWhitePixels = whitePixels;
-
     }
 
     void Update ()
@@ -47,6 +41,7 @@ public class PixCheck : MonoBehaviour {
         if (Input.GetButtonUp("Fire1"))
         {
             whitePixelsCheck();
+            PixPaint();
         }
     }
 
@@ -67,5 +62,19 @@ public class PixCheck : MonoBehaviour {
         }
 
         whitePixels = count;
+    }
+
+    //------------------------------------------------
+    // 全体の何パーセント塗れたかを調べるメソッド
+    //------------------------------------------------
+    void PixPaint()
+    {
+        //パーセンテージを計算
+        float p = 0;
+
+        //整数同士の割り算は整数になるので、float型で計算
+        p = (float)whitePixels / (float)filstWhitePixels * 100;
+
+        pixelsPaint = 100 - Mathf.FloorToInt(p);
     }
 }

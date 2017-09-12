@@ -38,8 +38,6 @@ public class GameManager : MonoBehaviour {
         p = (float)whitePixels / (float)filstWhitePixels * 100;
 
         pixelsPaint = 100 - Mathf.FloorToInt(p);
-
-        Debug.Log(pixelsPaint);
     }
 
     void Clear()

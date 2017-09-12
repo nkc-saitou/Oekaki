@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpriteMove : MonoBehaviour {
+public class BaseGimmick : MonoBehaviour {
+
 
     //------------------------------------------
     // public
     //------------------------------------------
 
-    public float shakeX;
-    public float shakeY;
+    public float shakeX = 0.02f;
 
     //------------------------------------------
     // private
@@ -17,23 +17,21 @@ public class SpriteMove : MonoBehaviour {
 
     PixCheck pixCheck;
 
-    int filstWhitePixsels;
-    int whitePixels = 0; //最初の白
-
-    int pixelsPaint; //どれだけ塗れたかのパーセンテージ
+    int pixelsPaint = 0; //どれだけ塗れたかのパーセンテージ
 
     Vector3 objPos;
 
-    void Start ()
+
+    void Start()
     {
         pixCheck = GetComponent<PixCheck>();
-	}
-	
-	void Update ()
+    }
+
+    void Update()
     {
         if (Input.GetButtonUp("Fire1"))
         {
-            PixPaint();
+            pixelsPaint = pixCheck.PixelsPaint;
         }
 
         ShakeSprite();
@@ -41,48 +39,42 @@ public class SpriteMove : MonoBehaviour {
     }
 
     //--------------------------------------------------------
-    //　どれだけ色が塗れたかのパーセントを調べるメソッド
-    //--------------------------------------------------------
-    void PixPaint()
-    {
-        filstWhitePixsels = pixCheck.FilstWhitePixels;
-        whitePixels = pixCheck.WhitePixels;
-
-        //パーセンテージを計算
-        float p = 0;
-
-        //整数同士の割り算は整数になるので、float型で計算
-        p = (float)whitePixels / (float)filstWhitePixsels * 100;
-
-        pixelsPaint = 100 - Mathf.FloorToInt(p);
-    }
-
-    //--------------------------------------------------------
     //　震えるメソッド
     //--------------------------------------------------------
     void ShakeSprite()
     {
+        //一定以上塗れている、または一定以上塗れていない場合、以下の処理をしない
         if (pixelsPaint < 10 || pixelsPaint >= 70) return;
 
         objPos = gameObject.transform.localPosition;
 
+        //ｘ軸方向にぶるぶる震える
         objPos.x -= shakeX;
-        objPos.y -= shakeY;
         shakeX *= -1;
-        shakeY *= -1;
         objPos.x += shakeX;
-        objPos.y += shakeY;
 
         gameObject.transform.localPosition = objPos;
     }
 
+    //--------------------------------------------------------
+    //　ギミック発動用メソッド
+    //--------------------------------------------------------
     void MoveSprite()
     {
+        //一定以上塗れていない場合、ギミックの処理を実行しない
         if (pixelsPaint < 70) return;
 
+        GimmickActivate();
+    }
+
+    //--------------------------------------------------------
+    //　どんなギミックが発動するか
+    //--------------------------------------------------------
+    public virtual void GimmickActivate()
+    {
+        //オブジェクトを動かす
         float dx = 0;
         float speed = 15.0f;
-
         float border = 20;
 
         objPos = gameObject.transform.localPosition;
@@ -90,7 +82,8 @@ public class SpriteMove : MonoBehaviour {
         objPos.x += dx;
         gameObject.transform.localPosition = objPos;
 
-        if(objPos.x > border)
+        //border以上動いたらオブジェクトを削除する
+        if (objPos.x > border)
         {
             Destroy(gameObject);
         }
