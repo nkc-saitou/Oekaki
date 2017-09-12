@@ -2,20 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PixCheck))]
+[AddComponentMenu("Scripts/Paint/PixAcces")]
 public class PixAcces : MonoBehaviour
 {
     //-------------------------------------------------------------------------
     //  Private
     //-------------------------------------------------------------------------
 
-    //[SerializeField]
-    Renderer renderer;
+    new Renderer renderer;
     
     public static Color penColor;
     public static bool isPenUse;
 
     Texture2D drawTexture;
     Color[] buffer;
+
+    bool touching;
+    Vector2 beforePoint;
 
     //=========================================================================
 
@@ -42,12 +46,30 @@ public class PixAcces : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
                 if (gameObject.GetInstanceID() == hit.collider.gameObject.GetInstanceID())
-                    Draw(hit.textureCoord * 256);
+                {
+                    Vector2 point = hit.textureCoord * 256;
+
+                    if (touching)
+                        DrawLine(point, beforePoint);
+                    else
+                        Draw(point);
+
+                    beforePoint = point;
+                    touching = true;
+                }
+                else
+                {
+                    touching = false;
+                }
             }
 
             drawTexture.SetPixels(buffer);
             drawTexture.Apply();
             renderer.material.mainTexture = drawTexture;
+        }
+        else
+        {
+            touching = false;
         }
     }
 
@@ -67,6 +89,16 @@ public class PixAcces : MonoBehaviour
                     buffer.SetValue(cccc, x + 256 * y);
                 }
             }
+        }
+    }
+
+    public void DrawLine(Vector2 p, Vector2 q)
+    {
+        int lerpNum = 10;
+        for (int i = 0; i < lerpNum + 1; i++)
+        {
+            Vector2 r = Vector2.Lerp(p, q, i * (1.0f / lerpNum));
+            Draw(r);
         }
     }
 

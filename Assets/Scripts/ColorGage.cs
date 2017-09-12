@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[AddComponentMenu("Scripts/Paint/ColorGage")]
 public class ColorGage : MonoBehaviour
 {
     //-------------------------------------------------------------------------
@@ -62,6 +63,7 @@ public class ColorGage : MonoBehaviour
 
                 if (penGageNum[selectNo] == 0)
                     PixAcces.isPenUse = false;
+                    
             }
         }
     }
