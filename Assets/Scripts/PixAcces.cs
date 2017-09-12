@@ -12,8 +12,9 @@ public class PixAcces : MonoBehaviour
 
     new Renderer renderer;
     
-    public static Color penColor;
-    public static bool isPenUse;
+    public static Color penColor;   //ペンの色
+    public static bool isPenUse;    //ペンフラグ
+    public static int gageCount = 0;  //ゲージ減少カウント
 
     Texture2D drawTexture;
     Color[] buffer;
@@ -21,11 +22,15 @@ public class PixAcces : MonoBehaviour
     bool touching;
     Vector2 beforePoint;
 
+    ColorGage colorGage;
+
     //=========================================================================
 
     void Start()
     {
         renderer = GetComponent<Renderer>();
+        //ColorGage取得
+        colorGage = GameObject.Find("ColorGages").GetComponent<ColorGage>();
 
         Texture2D mainTexture = (Texture2D)renderer.material.mainTexture;
         Color[] pixels = mainTexture.GetPixels();
@@ -84,9 +89,22 @@ public class PixAcces : MonoBehaviour
             {
                 if ((p - new Vector2(x, y)).magnitude < 5)
                 {
-                    Color cccc = (buffer[x + 256 * y] == Color.black) ? Color.black : penColor;
-                    cccc.a = buffer[x + 256 * y].a;
-                    buffer.SetValue(cccc, x + 256 * y);
+                    int pixNo = x + 256 * y;
+                    Color cccc = (buffer[pixNo] == Color.black) ? Color.black : penColor;
+                    cccc.a = buffer[pixNo].a;
+                    //色の回収
+                    if (cccc == Color.white)
+                        Collection(buffer[pixNo]);
+                    //カウント
+                    if (IsCount(cccc, buffer[pixNo])) gageCount++;
+                    //色をセット
+                    buffer.SetValue(cccc, pixNo);
+                    //カウント確認
+                    if (gageCount >= 256)
+                    {
+                        colorGage.GageDown();
+                        gageCount = 0;
+                    }
                 }
             }
         }
@@ -105,8 +123,16 @@ public class PixAcces : MonoBehaviour
     //-------------------------------------------------------------------------
     //  回収するメソッド
     //-------------------------------------------------------------------------
-    void Collection()
+    void Collection(Color c)
     {
 
+    }
+
+    //-------------------------------------------------------------------------
+    //  カウントをチェック
+    //-------------------------------------------------------------------------
+    bool IsCount(Color cC, Color bC)
+    {
+        return cC != bC && bC != Color.black;
     }
 }

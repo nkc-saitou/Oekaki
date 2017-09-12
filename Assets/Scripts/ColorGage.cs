@@ -6,6 +6,21 @@ using UnityEngine.UI;
 [AddComponentMenu("Scripts/Paint/ColorGage")]
 public class ColorGage : MonoBehaviour
 {
+    //public static ColorGage instance;
+
+    //private void Awake()
+    //{
+    //    if (instance == null)
+    //    {
+    //        instance = this;
+    //        DontDestroyOnLoad(this.gameObject);
+    //    }
+    //    else
+    //    {
+    //        Destroy(this.gameObject);
+    //    }
+    //}
+
     //-------------------------------------------------------------------------
     //  Private
     //-------------------------------------------------------------------------
@@ -48,26 +63,6 @@ public class ColorGage : MonoBehaviour
         ChangeColor(0);
 	}
 
-    void Update()
-    {
-        if (Input.GetMouseButton(0) && penGageNum[selectNo] != 0)
-        {
-            timer += Time.deltaTime;
-
-            if(timer >= 0.2f)
-            {
-                //ゲージ減少
-                penGageNum[selectNo]--;
-                gageArr[selectNo].sizeDelta = new Vector2(penGageNum[selectNo], 20);
-                timer = 0;
-
-                if (penGageNum[selectNo] == 0)
-                    PixAcces.isPenUse = false;
-                    
-            }
-        }
-    }
-
     //-------------------------------------------------------------------------
     //  Button
     //-------------------------------------------------------------------------
@@ -84,16 +79,42 @@ public class ColorGage : MonoBehaviour
 
     public void ChangeCollection()
     {
-        
+        selectNo = -1;
+        //ペンの色変更
+        PixAcces.penColor = Color.white;
+        PixAcces.isPenUse = true;
+        PixAcces.gageCount = 0;
+    }
+
+    //-------------------------------------------------------------------------
+    //  ゲージ減少
+    //-------------------------------------------------------------------------
+
+    public void GageDown()
+    {
+        //ゲージ消費
+        penGageNum[selectNo] = Mathf.Max(0, penGageNum[selectNo] - 1);
+        gageArr[selectNo].sizeDelta = new Vector2(penGageNum[selectNo], 20);
+
+        //残量確認
+        if (penGageNum[selectNo] == 0)
+            PixAcces.isPenUse = false;
     }
 
     //-------------------------------------------------------------------------
     //  ゲージ回復
     //-------------------------------------------------------------------------
-
     public void GageHeal(int select,int num)
     {
         //ゲージ回復
-        penGageNum[select] = Mathf.Max(100, penGageNum[select] + num);
+        penGageNum[select] = Mathf.Min(100, penGageNum[select] + num);
+    }
+
+    //-------------------------------------------------------------------------
+    //  残りゲージの確認
+    //-------------------------------------------------------------------------
+    void CheckGage()
+    {
+
     }
 }
