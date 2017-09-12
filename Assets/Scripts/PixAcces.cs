@@ -2,26 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PixCheck))]
+[AddComponentMenu("Scripts/Paint/PixAcces")]
 public class PixAcces : MonoBehaviour
 {
     //-------------------------------------------------------------------------
     //  Private
     //-------------------------------------------------------------------------
 
-    //[SerializeField]
-    Renderer renderer;
+    new Renderer renderer;
     
-    public static Color penColor;
-    public static bool isPenUse;
+    public static Color penColor;   //ペンの色
+    public static bool isPenUse;    //ペンフラグ
+    public static int gageCount = 0;  //ゲージ減少カウント
 
     Texture2D drawTexture;
     Color[] buffer;
+
+    bool touching;
+    Vector2 beforePoint;
+
+    ColorGage colorGage;
 
     //=========================================================================
 
     void Start()
     {
         renderer = GetComponent<Renderer>();
+        //ColorGage取得
+        colorGage = GameObject.Find("ColorGages").GetComponent<ColorGage>();
 
         Texture2D mainTexture = (Texture2D)renderer.material.mainTexture;
         Color[] pixels = mainTexture.GetPixels();
@@ -42,12 +51,30 @@ public class PixAcces : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
                 if (gameObject.GetInstanceID() == hit.collider.gameObject.GetInstanceID())
-                    Draw(hit.textureCoord * 256);
+                {
+                    Vector2 point = hit.textureCoord * 256;
+
+                    if (touching)
+                        DrawLine(point, beforePoint);
+                    else
+                        Draw(point);
+
+                    beforePoint = point;
+                    touching = true;
+                }
+                else
+                {
+                    touching = false;
+                }
             }
 
             drawTexture.SetPixels(buffer);
             drawTexture.Apply();
             renderer.material.mainTexture = drawTexture;
+        }
+        else
+        {
+            touching = false;
         }
     }
 
@@ -62,19 +89,50 @@ public class PixAcces : MonoBehaviour
             {
                 if ((p - new Vector2(x, y)).magnitude < 5)
                 {
-                    Color cccc = penColor;
-                    cccc.a = buffer[x + 256 * y].a;
-                    buffer.SetValue(cccc, x + 256 * y);
+                    int pixNo = x + 256 * y;
+                    Color cccc = (buffer[pixNo] == Color.black) ? Color.black : penColor;
+                    cccc.a = buffer[pixNo].a;
+                    //色の回収
+                    if (cccc == Color.white)
+                        Collection(buffer[pixNo]);
+                    //カウント
+                    if (IsCount(cccc, buffer[pixNo])) gageCount++;
+                    //色をセット
+                    buffer.SetValue(cccc, pixNo);
+                    //カウント確認
+                    if (gageCount >= 256)
+                    {
+                        colorGage.GageDown();
+                        gageCount = 0;
+                    }
                 }
             }
+        }
+    }
+
+    public void DrawLine(Vector2 p, Vector2 q)
+    {
+        int lerpNum = 10;
+        for (int i = 0; i < lerpNum + 1; i++)
+        {
+            Vector2 r = Vector2.Lerp(p, q, i * (1.0f / lerpNum));
+            Draw(r);
         }
     }
 
     //-------------------------------------------------------------------------
     //  回収するメソッド
     //-------------------------------------------------------------------------
-    void Collection()
+    void Collection(Color c)
     {
 
+    }
+
+    //-------------------------------------------------------------------------
+    //  カウントをチェック
+    //-------------------------------------------------------------------------
+    bool IsCount(Color cC, Color bC)
+    {
+        return cC != bC && bC != Color.black;
     }
 }
