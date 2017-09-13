@@ -181,4 +181,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e712c0504bd70594282f0024b601ea74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeX: 0.02
+  shakeX: 10

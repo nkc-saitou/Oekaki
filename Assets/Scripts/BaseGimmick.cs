@@ -21,10 +21,10 @@ public class BaseGimmick : MonoBehaviour {
 
     Vector3 objPos;
 
-
     void Start()
     {
         pixCheck = GetComponent<PixCheck>();
+        objPos = transform.localPosition;
     }
 
     void Update()
@@ -46,14 +46,20 @@ public class BaseGimmick : MonoBehaviour {
         //一定以上塗れている、または一定以上塗れていない場合、以下の処理をしない
         if (pixelsPaint < 10 || pixelsPaint >= 70) return;
 
-        objPos = gameObject.transform.localPosition;
+        gameObject.transform.localPosition = new Vector3(objPos.x+Mathf.Sin(Time.time*100) * shakeX,transform.localPosition.y, transform.localPosition.z);
+
+        //objPos = gameObject.transform.localPosition;
 
         //ｘ軸方向にぶるぶる震える
+        /*
         objPos.x -= shakeX;
         shakeX *= -1;
         objPos.x += shakeX;
+        */
 
-        gameObject.transform.localPosition = objPos;
+        //objPos.x = Mathf.Sin(Time.time)*shakeX;
+
+        //gameObject.transform.localPosition = objPos;
     }
 
     //--------------------------------------------------------

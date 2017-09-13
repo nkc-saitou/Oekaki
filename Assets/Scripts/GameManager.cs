@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour {
 
     int pixelsPaint = 0;
 
+    public int clearBorder = 80;
+
     void Start ()
     {
         pixCam = GetComponent<PixCam>();
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour {
 		if(Input.GetButtonUp("Fire1"))
         {
             PixPaint();
+            Debug.Log(pixelsPaint);
         }
 
         Clear();
@@ -42,7 +45,7 @@ public class GameManager : MonoBehaviour {
 
     void Clear()
     {
-        if (pixelsPaint < 97) return;
+        if (pixelsPaint < clearBorder) return;
 
         Debug.Log("Clear!");
     }
