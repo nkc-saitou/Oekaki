@@ -30,7 +30,7 @@ public class PixAcces : MonoBehaviour
     {
         renderer = GetComponent<Renderer>();
         //ColorGage取得
-        colorGage = GameObject.Find("ColorGages").GetComponent<ColorGage>();
+        colorGage = GameObject.Find("ColorCanvas").GetComponent<ColorGage>();
 
         Texture2D mainTexture = (Texture2D)renderer.material.mainTexture;
         Color[] pixels = mainTexture.GetPixels();
@@ -100,7 +100,7 @@ public class PixAcces : MonoBehaviour
                     //色をセット
                     buffer.SetValue(cccc, pixNo);
                     //カウント確認
-                    if (gageCount >= 256)
+                    if (gageCount >= 512)
                     {
                         colorGage.GageDown();
                         gageCount = 0;
