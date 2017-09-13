@@ -94,8 +94,6 @@ public class ColorGage : MonoBehaviour
             return;
         }
 
-        Debug.Log("0になった");
-
         //前詰め
         for(int i = 0; i <  gageArr.Count - 1; i++)
         {
@@ -117,8 +115,18 @@ public class ColorGage : MonoBehaviour
     //-------------------------------------------------------------------------
     public void GageHeal(Color color,int num)
     {
-        //ゲージ回復
-        
+        //色確認
+        if (penColorArr[gageArr.Count - 1] == color)    //回復する色が最後尾の色だった場合
+        {
+            penGageNum[gageArr.Count - 1] += num;
+            Vector2 size = gageArr[gageArr.Count - 1].sizeDelta;
+            size.y += num * GAGE_MAX * 0.01f;
+            gageArr[gageArr.Count - 1].sizeDelta = size;
+        }
+        else   //回復する色が最後尾の色でなかった場合
+        {
+
+        }
     }
 
     //-------------------------------------------------------------------------
