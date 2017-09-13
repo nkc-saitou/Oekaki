@@ -11,3 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e6931410f880d42b056403ea6bdc33, type: 3}
   m_Name: Pen_01
   m_EditorClassIdentifier: 
+  colorArr:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 1, g: 1, b: 0, a: 1}
+  - {r: 0, g: 1, b: 1, a: 1}
+  - {r: 1, g: 0, b: 1, a: 1}
+  colorNumArr: 0a0000000a0000000a0000000a0000000a0000000a000000
