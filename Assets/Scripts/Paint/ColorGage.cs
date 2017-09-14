@@ -21,8 +21,8 @@ public class ColorGage : MonoBehaviour
     RectTransform gageSample;
 
     Color[] penColorArr = new Color[10];    //ペンの色の種類
-    int[] penGageNum = new int[10];         //インク量
-    List<RectTransform> gageArr = new List<RectTransform>();  //ゲージ量
+    int[] penGageNum = new int[10];     //インク量
+    List<RectTransform> gageArr = new List<RectTransform>();
 
     //=========================================================================
 
