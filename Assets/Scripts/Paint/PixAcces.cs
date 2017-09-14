@@ -124,4 +124,13 @@ public class PixAcces : MonoBehaviour
     {
         return cC != bC && bC != Color.black;
     }
+
+    //-------------------------------------------------------------------------
+    //  ゲージ回復確認用メソッド
+    //-------------------------------------------------------------------------
+    [ContextMenu("Heal")]
+    void Heal()
+    {
+        colorGage.GageHeal(Color.red, 20);
+    }
 }

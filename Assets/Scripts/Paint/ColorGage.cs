@@ -99,12 +99,13 @@ public class ColorGage : MonoBehaviour
         {
             penColorArr[i] = penColorArr[i + 1];
             penGageNum[i] = penGageNum[i + 1];
-            gageArr[i] = gageArr[i + 1];
         }
         //後処理
         penColorArr[gageArr.Count - 1] = Color.black;
         penGageNum[gageArr.Count - 1] = 0;
-        gageArr.Remove(gageArr[gageArr.Count - 1]);
+        //先頭ゲージを削除
+        Destroy(gageArr[0].gameObject);
+        gageArr.Remove(gageArr[0]);
 
         //ペン変更
         ChangeColor();
@@ -125,7 +126,28 @@ public class ColorGage : MonoBehaviour
         }
         else   //回復する色が最後尾の色でなかった場合
         {
+            //合計
+            int height = 0;
+            foreach (int ht in penGageNum)
+                height += ht;
+            //配列の最後尾に追加
+            penGageNum[gageArr.Count] += num;
+            penColorArr[gageArr.Count] = color;
 
+            //生成
+            RectTransform gage = Instantiate(gageSample);
+            gage.SetParent(colorGages);
+            gage.SetAsFirstSibling();
+
+            //大きさと位置を調整
+            gage.localPosition = new Vector3(0, 0, 0);
+            gage.sizeDelta = new Vector2(30, (penGageNum[gageArr.Count] + height) * GAGE_MAX * 0.01f);
+
+            //ゲージの色を設定
+            gage.GetComponent<Image>().color = color;
+
+            //配列に追加
+            gageArr.Add(gage);
         }
     }
 
