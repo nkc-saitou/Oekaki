@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour {
 
     public int clearBorder = 80;
 
+    float _framCount;
+
     void Start ()
     {
         pixCam = GetComponent<PixCam>();
@@ -20,11 +22,19 @@ public class GameManager : MonoBehaviour {
 	
 	void Update ()
     {
-		if(Input.GetButtonUp("Fire1"))
+        _framCount = Time.frameCount;
+
+        if(_framCount % 30 == 0)
         {
             PixPaint();
             Debug.Log(pixelsPaint);
         }
+        
+		//if(Input.GetButtonUp("Fire1"))
+  //      {
+  //          PixPaint();
+  //          Debug.Log(pixelsPaint);
+  //      }
 
         Clear();
     }
