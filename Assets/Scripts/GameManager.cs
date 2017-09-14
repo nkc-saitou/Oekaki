@@ -27,15 +27,8 @@ public class GameManager : MonoBehaviour {
         if(_framCount % 30 == 0)
         {
             PixPaint();
-            Debug.Log(pixelsPaint);
         }
-        
-		//if(Input.GetButtonUp("Fire1"))
-  //      {
-  //          PixPaint();
-  //          Debug.Log(pixelsPaint);
-  //      }
-
+       
         Clear();
     }
 

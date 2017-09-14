@@ -36,6 +36,7 @@ public class PixCheck : MonoBehaviour {
 
     void Update ()
     {
+        //３０フレームに一度処理を実行する
         int _framCount = Time.frameCount;
 
         if(_framCount%30 == 0)
@@ -43,12 +44,6 @@ public class PixCheck : MonoBehaviour {
             whitePixelsCheck();
             PixPaint();
         }
-
-        //if (Input.GetButtonUp("Fire1"))
-        //{
-        //    whitePixelsCheck();
-        //    PixPaint();
-        //}
     }
 
     //------------------------------------------------
@@ -60,17 +55,10 @@ public class PixCheck : MonoBehaviour {
         pixels = mainTexture.GetPixels();
 
         int whiteCount = 0; //白ピクセル
-        //int redCount = 0; //赤ピクセル
-        //int blueCount = 0; //青ピクセル
-        //int greenCount = 0; //緑ピクセル
 
         foreach (Color c in pixels)
         {
             if (c == Color.white) whiteCount++;
-
-            //else if (c == Color.red) redCount++;
-            //else if (c == Color.blue) blueCount++;
-            //else if (c == Color.green) greenCount++;
         }
 
         whitePixels = whiteCount;
@@ -86,8 +74,6 @@ public class PixCheck : MonoBehaviour {
 
         //整数同士の割り算は整数になるので、float型で計算
         p = (float)whitePixels / (float)filstWhitePixels * 100;
-
-        Debug.Log(p);
 
         PixelsPaint = 100 - Mathf.FloorToInt(p);
     }

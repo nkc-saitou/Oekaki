@@ -54,7 +54,6 @@ public class ColorGage : MonoBehaviour
             gageArr.Add(gage);
         }
 
-        Debug.Log(gageArr.Count);
         ChangeColor();
     }
 

@@ -366,6 +366,7 @@ MonoBehaviour:
   - {fileID: 1914731460}
   - {fileID: 432166931}
   happaTrigger: 3200000050000000
+  colorGage: {fileID: 2147248019}
 --- !u!1 &609828630
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,3 +1252,9 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 987bced74f30ecb46b89c0a635f17975, type: 3}
+--- !u!114 &2147248019 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114338730696983980, guid: bd01bdd475c69924b805e4b4184a9630,
+    type: 2}
+  m_PrefabInternal: {fileID: 1842942739}
+  m_Script: {fileID: 11500000, guid: cccec0001f4bb9d498f77e49cf6e53a1, type: 3}
