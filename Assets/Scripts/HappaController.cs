@@ -27,8 +27,21 @@ public class HappaController : MonoBehaviour {
         {
             happaAnim[1].SetTrigger("grow");
         }
-
-
-
 	}
+
+    IEnumerator happaGrow()
+    {
+        if (pixCheck.PixelsPaint >= happaTrigger[0])
+        {
+            happaAnim[0].SetTrigger("grow");
+        }
+
+        if (pixCheck.PixelsPaint >= happaTrigger[1])
+        {
+            happaAnim[1].SetTrigger("grow");
+
+            yield return new WaitForSeconds(1.0f);
+
+        }
+    }
 }

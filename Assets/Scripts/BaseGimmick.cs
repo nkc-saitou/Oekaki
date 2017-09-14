@@ -29,13 +29,22 @@ public class BaseGimmick : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetButtonUp("Fire1"))
+        //30フレームに一度塗れているかを判定する
+        int _framCount = Time.frameCount;
+
+        if(_framCount%30 == 0)
         {
             pixelsPaint = pixCheck.PixelsPaint;
         }
 
+        //if (Input.GetButtonUp("Fire1"))
+        //{
+        //    pixelsPaint = pixCheck.PixelsPaint;
+        //}
+
         ShakeSprite();
         MoveSprite();
+
     }
 
     //--------------------------------------------------------

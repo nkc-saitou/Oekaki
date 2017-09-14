@@ -59,7 +59,6 @@ public class ColorGage : MonoBehaviour
             //ゲージ
             penGageNum[i] = 100;
         }
-
         ChangeColor(0);
 	}
 
