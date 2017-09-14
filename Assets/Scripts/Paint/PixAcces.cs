@@ -11,7 +11,7 @@ public class PixAcces : MonoBehaviour
     //-------------------------------------------------------------------------
 
     new Renderer renderer;
-    
+
     public static Color penColor;   //ペンの色
     public static bool isPenUse;    //ペンフラグ
     public static int gageCount = 0;  //ゲージ減少カウント
@@ -30,7 +30,7 @@ public class PixAcces : MonoBehaviour
     {
         renderer = GetComponent<Renderer>();
         //ColorGage取得
-        colorGage = GameObject.Find("ColorGages").GetComponent<ColorGage>();
+        colorGage = GameObject.Find("ColorCanvas").GetComponent<ColorGage>();
 
         Texture2D mainTexture = (Texture2D)renderer.material.mainTexture;
         Color[] pixels = mainTexture.GetPixels();
@@ -92,15 +92,12 @@ public class PixAcces : MonoBehaviour
                     int pixNo = x + 256 * y;
                     Color cccc = (buffer[pixNo] == Color.black) ? Color.black : penColor;
                     cccc.a = buffer[pixNo].a;
-                    //色の回収
-                    if (cccc == Color.white)
-                        Collection(buffer[pixNo]);
                     //カウント
                     if (IsCount(cccc, buffer[pixNo])) gageCount++;
                     //色をセット
                     buffer.SetValue(cccc, pixNo);
                     //カウント確認
-                    if (gageCount >= 256)
+                    if (gageCount >= 512)
                     {
                         colorGage.GageDown();
                         gageCount = 0;
@@ -118,14 +115,6 @@ public class PixAcces : MonoBehaviour
             Vector2 r = Vector2.Lerp(p, q, i * (1.0f / lerpNum));
             Draw(r);
         }
-    }
-
-    //-------------------------------------------------------------------------
-    //  回収するメソッド
-    //-------------------------------------------------------------------------
-    void Collection(Color c)
-    {
-
     }
 
     //-------------------------------------------------------------------------
