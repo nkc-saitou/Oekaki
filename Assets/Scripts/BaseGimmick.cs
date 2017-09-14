@@ -57,18 +57,6 @@ public class BaseGimmick : MonoBehaviour {
 
         gameObject.transform.localPosition = new Vector3(objPos.x+Mathf.Sin(Time.time*100) * shakeX,transform.localPosition.y, transform.localPosition.z);
 
-        //objPos = gameObject.transform.localPosition;
-
-        //ｘ軸方向にぶるぶる震える
-        /*
-        objPos.x -= shakeX;
-        shakeX *= -1;
-        objPos.x += shakeX;
-        */
-
-        //objPos.x = Mathf.Sin(Time.time)*shakeX;
-
-        //gameObject.transform.localPosition = objPos;
     }
 
     //--------------------------------------------------------
