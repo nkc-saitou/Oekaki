@@ -11,14 +11,21 @@ public class GameManager : MonoBehaviour {
 
     int pixelsPaint = 0;
 
+    float _framCount;
+
     public int clearBorder = 80;
 
-    float _framCount;
+    public PixCheck pixCheck;
+
+    public GameObject clearImage;
+
 
     void Start ()
     {
         pixCam = GetComponent<PixCam>();
-	}
+        clearImage.SetActive(false);
+
+    }
 	
 	void Update ()
     {
@@ -48,8 +55,11 @@ public class GameManager : MonoBehaviour {
 
     void Clear()
     {
-        if (pixelsPaint < clearBorder) return;
-
-        Debug.Log("Clear!");
+        //if (pixelsPaint < clearBorder) return;
+        if(pixCheck.PixelsPaint >= 80)
+        {
+            //Debug.Log("Clear!");
+            clearImage.SetActive(true);
+        }
     }
 }

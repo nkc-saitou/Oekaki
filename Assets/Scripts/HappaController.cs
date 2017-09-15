@@ -4,13 +4,29 @@ using UnityEngine;
 
 public class HappaController : MonoBehaviour {
 
+    //------------------------------------------
+    // private
+    //------------------------------------------
+
     Animator anim;
+
+    bool gageHealFlg = true;
+
+    //------------------------------------------
+    // public
+    //------------------------------------------
 
     public PixCheck pixCheck;
     public Animator[] happaAnim;
     public int[] happaTrigger;
 
+    public int gageHeal;
+
     public ColorGage colorGage;
+
+    public PenData penDate;
+
+    //=============================================================
 
 	void Start ()
     {
@@ -20,33 +36,28 @@ public class HappaController : MonoBehaviour {
 	
 	void Update ()
     {
-        //if (pixCheck.PixelsPaint >= happaTrigger[0])
-        //{
-        //    happaAnim[0].SetTrigger("grow");
-        //}
+        happaGrow();
+    }
 
-        //if(pixCheck.PixelsPaint >= happaTrigger[1])
-        //{
-        //    happaAnim[1].SetTrigger("grow");
-        //}
-
-        StartCoroutine(happaGrow());
-	}
-
-    IEnumerator happaGrow()
+    //------------------------------------------
+    // はっぱが成長するメソッド
+    //------------------------------------------
+    void happaGrow()
     {
+        //一段目の芽
         if (pixCheck.PixelsPaint >= happaTrigger[0])
         {
             happaAnim[0].SetTrigger("grow");
         }
-
-        if (pixCheck.PixelsPaint >= happaTrigger[1])
+        //二段目の芽
+        if (pixCheck.PixelsPaint >= happaTrigger[1] && gageHealFlg)
         {
             happaAnim[1].SetTrigger("grow");
+            int colorRandom = Random.Range(0, penDate.colorArr.Length);
+            colorGage.GageHeal(penDate.colorArr[colorRandom], gageHeal);
 
-            yield return new WaitForSeconds(0.5f);
-
-            colorGage.GageHeal(Color.red,10);
+            
+            gageHealFlg = false;
         }
     }
 }

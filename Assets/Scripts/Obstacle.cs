@@ -9,7 +9,6 @@ public class Obstacle : MonoBehaviour {
         if (other.tag == "Car")
         {
             GameObject obj = other.gameObject;
-            Debug.Log("OK");
             gameObject.transform.parent = obj.transform;
         }
     }

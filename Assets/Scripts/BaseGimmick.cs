@@ -21,6 +21,8 @@ public class BaseGimmick : MonoBehaviour {
 
     Vector3 objPos;
 
+    protected int GimmickAct = 70;
+
     void Start()
     {
         pixCheck = GetComponent<PixCheck>();
@@ -32,7 +34,7 @@ public class BaseGimmick : MonoBehaviour {
         //30フレームに一度塗れているかを判定する
         int _framCount = Time.frameCount;
 
-        if(_framCount%30 == 0)
+        if (_framCount % 30 == 0)
         {
             pixelsPaint = pixCheck.PixelsPaint;
         }
@@ -53,10 +55,9 @@ public class BaseGimmick : MonoBehaviour {
     void ShakeSprite()
     {
         //一定以上塗れている、または一定以上塗れていない場合、以下の処理をしない
-        if (pixelsPaint < 10 || pixelsPaint >= 70) return;
+        if (pixelsPaint < 5 || pixelsPaint >= GimmickAct) return;
 
         gameObject.transform.localPosition = new Vector3(objPos.x+Mathf.Sin(Time.time*100) * shakeX,transform.localPosition.y, transform.localPosition.z);
-
     }
 
     //--------------------------------------------------------
@@ -64,8 +65,10 @@ public class BaseGimmick : MonoBehaviour {
     //--------------------------------------------------------
     void MoveSprite()
     {
+        BorderSetting();
+
         //一定以上塗れていない場合、ギミックの処理を実行しない
-        if (pixelsPaint < 70) return;
+        if (pixelsPaint < GimmickAct) return;
 
         GimmickActivate();
     }
@@ -90,5 +93,10 @@ public class BaseGimmick : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+    }
+
+    public virtual void BorderSetting()
+    {
+        GimmickAct = 70;
     }
 }

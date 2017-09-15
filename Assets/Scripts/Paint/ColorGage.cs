@@ -8,6 +8,8 @@ public class ColorGage : MonoBehaviour
 {
     const int GAGE_MAX = 300;
 
+    public GameObject gameOverImage;
+
     //-------------------------------------------------------------------------
     //  Private
     //-------------------------------------------------------------------------
@@ -32,6 +34,8 @@ public class ColorGage : MonoBehaviour
         data.colorArr.CopyTo(penColorArr, 0);
         data.colorNumArr.CopyTo(penGageNum, 0);
 
+        gameOverImage.SetActive(false);
+
         //ゲージ量
         int gageCnt = 0;
 
@@ -53,7 +57,6 @@ public class ColorGage : MonoBehaviour
             //配列に追加
             gageArr.Add(gage);
         }
-
         ChangeColor();
     }
 
@@ -156,6 +159,6 @@ public class ColorGage : MonoBehaviour
     void GameOver()
     {
         PixAcces.isPenUse = false;
-        Debug.Log("GameOver");
+        gameOverImage.SetActive(true);
     }
 }

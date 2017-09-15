@@ -10,10 +10,15 @@ public class Gimmick_Handle : BaseGimmick {
 
     public override void GimmickActivate()
     {
-        transform.Rotate(new Vector3(0, 2, 0));
+        transform.Rotate(new Vector3(0, 0, 2));
 
         HandlePos = Handle.transform.position;
         HandlePos.y += speed * Time.deltaTime;
         Handle.transform.position = HandlePos;
+    }
+
+    public override void BorderSetting()
+    {
+        GimmickAct = 20;
     }
 }
