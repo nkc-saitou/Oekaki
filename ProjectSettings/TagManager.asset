@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Obs
   - Car
+  - Fish
+  - Esa
   layers:
   - Default
   - TransparentFX
