@@ -10,6 +10,8 @@ public class HappaController : MonoBehaviour {
     public Animator[] happaAnim;
     public int[] happaTrigger;
 
+    public ColorGage colorGage;
+
 	void Start ()
     {
         anim = GetComponent<Animator>();
@@ -18,17 +20,33 @@ public class HappaController : MonoBehaviour {
 	
 	void Update ()
     {
+        //if (pixCheck.PixelsPaint >= happaTrigger[0])
+        //{
+        //    happaAnim[0].SetTrigger("grow");
+        //}
+
+        //if(pixCheck.PixelsPaint >= happaTrigger[1])
+        //{
+        //    happaAnim[1].SetTrigger("grow");
+        //}
+
+        StartCoroutine(happaGrow());
+	}
+
+    IEnumerator happaGrow()
+    {
         if (pixCheck.PixelsPaint >= happaTrigger[0])
         {
             happaAnim[0].SetTrigger("grow");
         }
 
-        if(pixCheck.PixelsPaint >= happaTrigger[1])
+        if (pixCheck.PixelsPaint >= happaTrigger[1])
         {
             happaAnim[1].SetTrigger("grow");
+
+            yield return new WaitForSeconds(0.5f);
+
+            colorGage.GageHeal(Color.red,10);
         }
-
-
-
-	}
+    }
 }

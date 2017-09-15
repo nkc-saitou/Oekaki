@@ -29,13 +29,22 @@ public class BaseGimmick : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetButtonUp("Fire1"))
+        //30フレームに一度塗れているかを判定する
+        int _framCount = Time.frameCount;
+
+        if(_framCount%30 == 0)
         {
             pixelsPaint = pixCheck.PixelsPaint;
         }
 
+        //if (Input.GetButtonUp("Fire1"))
+        //{
+        //    pixelsPaint = pixCheck.PixelsPaint;
+        //}
+
         ShakeSprite();
         MoveSprite();
+
     }
 
     //--------------------------------------------------------
@@ -48,18 +57,6 @@ public class BaseGimmick : MonoBehaviour {
 
         gameObject.transform.localPosition = new Vector3(objPos.x+Mathf.Sin(Time.time*100) * shakeX,transform.localPosition.y, transform.localPosition.z);
 
-        //objPos = gameObject.transform.localPosition;
-
-        //ｘ軸方向にぶるぶる震える
-        /*
-        objPos.x -= shakeX;
-        shakeX *= -1;
-        objPos.x += shakeX;
-        */
-
-        //objPos.x = Mathf.Sin(Time.time)*shakeX;
-
-        //gameObject.transform.localPosition = objPos;
     }
 
     //--------------------------------------------------------

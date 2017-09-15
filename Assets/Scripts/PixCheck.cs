@@ -36,7 +36,10 @@ public class PixCheck : MonoBehaviour {
 
     void Update ()
     {
-        if (Input.GetButtonUp("Fire1"))
+        //３０フレームに一度処理を実行する
+        int _framCount = Time.frameCount;
+
+        if(_framCount%30 == 0)
         {
             whitePixelsCheck();
             PixPaint();
@@ -44,22 +47,21 @@ public class PixCheck : MonoBehaviour {
     }
 
     //------------------------------------------------
-    // 白のピクセルを調べるメソッド
+    // ピクセルの色を調べるメソッド
     //------------------------------------------------
     void whitePixelsCheck()
     {
         mainTexture = (Texture2D)GetComponent<Renderer>().material.mainTexture;
         pixels = mainTexture.GetPixels();
 
-        int count = 0;
+        int whiteCount = 0; //白ピクセル
 
         foreach (Color c in pixels)
         {
-            if (c == Color.white)
-                count++;
+            if (c == Color.white) whiteCount++;
         }
 
-        whitePixels = count;
+        whitePixels = whiteCount;
     }
 
     //------------------------------------------------
