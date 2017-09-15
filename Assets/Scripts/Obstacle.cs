@@ -6,7 +6,7 @@ public class Obstacle : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Car")
+        if (other.tag == "Fish")
         {
             GameObject obj = other.gameObject;
             Debug.Log("OK");
