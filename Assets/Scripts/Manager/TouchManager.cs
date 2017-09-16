@@ -30,10 +30,33 @@ public class TouchManager : MonoBehaviour
 
     void Update()
     {
-        if(isTouch && Input.GetMouseButton(0))
+        if (!isTouch) return;
+
+        if(Input.GetMouseButton(0))
+        {
+            Touch();
+        }
+    }
+
+    //-------------------------------------------------------------------------
+    //  
+    //-------------------------------------------------------------------------
+
+    void Touch()
+    {
+        //Ray
+        Ray ray = Camera.main.ScreenPointToRay(TouchOrClickPos());
+        RaycastHit hit;
+
+        if(Physics.Raycast(ray, out hit, 100.0f))
         {
 
         }
+    }
+
+    Vector3 TouchOrClickPos()
+    {
+        return (Input.touchSupported) ? (Vector3)Input.touches[0].position : Input.mousePosition;
     }
 
     //-------------------------------------------------------------------------
