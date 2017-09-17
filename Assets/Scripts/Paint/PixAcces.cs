@@ -44,13 +44,15 @@ public class PixAcces : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0) && isPenUse)
+        return;
+
+        if (Input.GetMouseButton(0) && isPenUse)//
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100.0f))
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);//
+            RaycastHit hit;//
+            if (Physics.Raycast(ray, out hit, 100.0f))//
             {
-                if (gameObject.GetInstanceID() == hit.collider.gameObject.GetInstanceID())
+                if (gameObject.GetInstanceID() == hit.collider.gameObject.GetInstanceID())//
                 {
                     Vector2 point = hit.textureCoord * 256;
 
@@ -123,6 +125,22 @@ public class PixAcces : MonoBehaviour
     bool IsCount(Color cC, Color bC)
     {
         return cC != bC && bC != Color.black;
+    }
+
+    //-------------------------------------------------------------------------
+    //  RayHit
+    //-------------------------------------------------------------------------
+    void RayHit(Vector2 point)
+    {
+        //描く
+        Draw(point);
+        //位置を記憶
+        beforePoint = point;
+
+        //反映
+        drawTexture.SetPixels(buffer);
+        drawTexture.Apply();
+        renderer.material.mainTexture = drawTexture;
     }
 
     //-------------------------------------------------------------------------

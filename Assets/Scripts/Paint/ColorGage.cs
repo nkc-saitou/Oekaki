@@ -158,7 +158,7 @@ public class ColorGage : MonoBehaviour
     //-------------------------------------------------------------------------
     void GameOver()
     {
-        PixAcces.isPenUse = false;
+        TouchManager.instance.IsTouch(false);
         gameOverImage.SetActive(true);
     }
 }

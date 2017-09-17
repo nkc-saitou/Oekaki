@@ -17,6 +17,7 @@ public class TouchManager : MonoBehaviour
         else
         {
             Destroy(this.gameObject);
+            return;
         }
     }
 
@@ -25,6 +26,9 @@ public class TouchManager : MonoBehaviour
     //-------------------------------------------------------------------------
 
     bool isTouch = true;
+
+    [SerializeField]
+    LayerMask layerMask;
 
     //=========================================================================
 
@@ -39,7 +43,7 @@ public class TouchManager : MonoBehaviour
     }
 
     //-------------------------------------------------------------------------
-    //  
+    //  タッチ処理
     //-------------------------------------------------------------------------
 
     void Touch()
@@ -48,9 +52,10 @@ public class TouchManager : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(TouchOrClickPos());
         RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit, 100.0f))
+        if(Physics.Raycast(ray, out hit, 100.0f, layerMask))
         {
-
+            //RayHit呼び出し
+            hit.collider.SendMessage("RayHit", hit.textureCoord * 256);
         }
     }
 
