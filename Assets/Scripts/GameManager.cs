@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
+    //----------------------------------------------
+    // private
+    //----------------------------------------------
+
     PixCam pixCam;
 
     int filstWhitePixels = 0;
@@ -13,6 +17,10 @@ public class GameManager : MonoBehaviour {
 
     float _framCount;
 
+    //----------------------------------------------
+    // public
+    //----------------------------------------------
+
     public int clearBorder = 80;
 
     public PixCheck pixCheck;
@@ -20,11 +28,13 @@ public class GameManager : MonoBehaviour {
     public GameObject clearImage;
 
 
+    public static bool ClearFlg = false; //クリア用フラグ　クリア時にtrueにする
+
+
     void Start ()
     {
         pixCam = GetComponent<PixCam>();
         clearImage.SetActive(false);
-
     }
 	
 	void Update ()
@@ -56,10 +66,10 @@ public class GameManager : MonoBehaviour {
     void Clear()
     {
         //if (pixelsPaint < clearBorder) return;
-        if(pixCheck.PixelsPaint >= 80)
+        if(pixCheck.PixelsPaint >= 90)
         {
-            //Debug.Log("Clear!");
             clearImage.SetActive(true);
+            ClearFlg = true;
         }
     }
 }

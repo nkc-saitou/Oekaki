@@ -6,7 +6,7 @@ public class Obstacle : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Fish")
+        if (other.tag == "Car")
         {
             GameObject obj = other.gameObject;
             gameObject.transform.parent = obj.transform;

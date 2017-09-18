@@ -20,6 +20,8 @@ public class HappaController : MonoBehaviour {
     public Animator[] happaAnim;
     public int[] happaTrigger;
 
+    public GameObject flowerObj;
+
     public int gageHeal;
 
     public ColorGage colorGage;
@@ -32,7 +34,9 @@ public class HappaController : MonoBehaviour {
     {
         anim = GetComponent<Animator>();
         anim.SetTrigger("grow");
-	}
+        flowerObj.SetActive(false);
+
+    }
 	
 	void Update ()
     {
@@ -53,10 +57,12 @@ public class HappaController : MonoBehaviour {
         if (pixCheck.PixelsPaint >= happaTrigger[1] && gageHealFlg)
         {
             happaAnim[1].SetTrigger("grow");
+
+            flowerObj.SetActive(true);
+
             int colorRandom = Random.Range(0, penDate.colorArr.Length);
             colorGage.GageHeal(penDate.colorArr[colorRandom], gageHeal);
 
-            
             gageHealFlg = false;
         }
     }
