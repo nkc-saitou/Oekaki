@@ -194,39 +194,40 @@ MonoBehaviour:
   bgmSound: []
   seSound: []
   penSound: {fileID: 8300000, guid: 6047a9d5a7af33f4894dd7c51152d794, type: 3}
---- !u!1 &1811686707
+--- !u!1 &1458718250
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 1811686709}
-  - component: {fileID: 1811686708}
+  - component: {fileID: 1458718252}
+  - component: {fileID: 1458718251}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: FadeManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1811686708
+--- !u!114 &1458718251
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1811686707}
+  m_GameObject: {fileID: 1458718250}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0efe373e81bd6f4e8a947b4711983ce, type: 3}
+  m_Script: {fileID: 11500000, guid: a21a334ac2841804f9ee7694cd1ada0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1811686709
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
+--- !u!4 &1458718252
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1811686707}
+  m_GameObject: {fileID: 1458718250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
