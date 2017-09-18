@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddComponentMenu("Scripts/Manager/TouchManager")]
 public class TouchManager : MonoBehaviour
 {
     //シングルトン
@@ -24,7 +25,6 @@ public class TouchManager : MonoBehaviour
     //-------------------------------------------------------------------------
     //  Private
     //-------------------------------------------------------------------------
-
     bool isTouch = true;
 
     [SerializeField]
@@ -33,25 +33,18 @@ public class TouchManager : MonoBehaviour
     GameObject touchObj;
 
     //=========================================================================
-
     void Update()
     {
         if (!isTouch) return;
 
         if (Input.GetMouseButton(0))
-            Touch();
-        else
         {
-            touchObj = null;
-            SoundManager.instance.PlayStop_Pen();
+            Touch();
         }
-            
     }
-
     //-------------------------------------------------------------------------
     //  タッチ処理
     //-------------------------------------------------------------------------
-
     void Touch()
     {
         //Ray
@@ -61,17 +54,7 @@ public class TouchManager : MonoBehaviour
         if(Physics.Raycast(ray, out hit, 100.0f, layerMask))
         {
             //RayHit呼び出し
-            if (hit.collider.gameObject == touchObj) hit.collider.SendMessage("RayHitCon", hit.textureCoord * 256);
-            else hit.collider.SendMessage("RayHit", hit.textureCoord * 256);
-
-            touchObj = hit.collider.gameObject;
-
-            //音再生
-            SoundManager.instance.PlayBack_Pen();
-        }
-        else
-        {
-            SoundManager.instance.PlayStop_Pen();
+            hit.collider.SendMessage("RayHit", hit.textureCoord * 256);
         }
     }
 
@@ -79,11 +62,9 @@ public class TouchManager : MonoBehaviour
     {
         return (Input.touchSupported) ? (Vector3)Input.touches[0].position : Input.mousePosition;
     }
-
     //-------------------------------------------------------------------------
     //  有効・無効
     //-------------------------------------------------------------------------
-
     public void IsTouch(bool flg)
     {
         isTouch = flg;

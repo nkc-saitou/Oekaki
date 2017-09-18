@@ -83,24 +83,15 @@ public class PixAcces : MonoBehaviour
     //-------------------------------------------------------------------------
     void RayHit(Vector2 point)
     {
-        //描く
-        Draw(point);
-        //位置を記憶
-        beforePoint = point;
+        if(beforePoint != point)
+        {
+            //描く
+            Draw(point);
+            //位置を記憶
+            beforePoint = point;
 
-        //反映
-        drawTexture.SetPixels(buffer);
-        drawTexture.Apply();
-        renderer.material.mainTexture = drawTexture;
-    }
-
-    void RayHitCon(Vector2 point)
-    {
-        //描く
-        Draw(point);
-        //DrawLine(point, beforePoint);
-        //位置を記憶
-        beforePoint = point;
+            SoundManager.instance.PlayBack_Pen();
+        }
 
         //反映
         drawTexture.SetPixels(buffer);

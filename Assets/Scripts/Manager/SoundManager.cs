@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddComponentMenu("Scripts/Manager/SoundManager")]
 public class SoundManager : MonoBehaviour
 {
     //シングルトン
@@ -36,7 +37,7 @@ public class SoundManager : MonoBehaviour
         //Pen
         penSource = gameObject.AddComponent<AudioSource>();
         penSource.volume = 0.7f;
-        penSource.loop = true;
+        penSource.loop = false;
         penSource.clip = penSound;
     }
 
@@ -84,7 +85,6 @@ public class SoundManager : MonoBehaviour
     {
         if(!penSource.isPlaying) penSource.Play();
     }
-    public void PlayStop_Pen() { penSource.Stop(); }
 
     //-------------------------------------------------------------------------
     //  enum

@@ -27,7 +27,6 @@ public class ColorGage : MonoBehaviour
     List<RectTransform> gageArr = new List<RectTransform>();
 
     //=========================================================================
-
     void Start()
     {
         //データを取得
@@ -59,7 +58,6 @@ public class ColorGage : MonoBehaviour
         }
         ChangeColor();
     }
-
     //-------------------------------------------------------------------------
     //  ペン変更
     //-------------------------------------------------------------------------
@@ -69,7 +67,6 @@ public class ColorGage : MonoBehaviour
         PixAcces.penColor = penColorArr[0];
         PixAcces.isPenUse = (penGageNum[0] != 0);
     }
-
     //-------------------------------------------------------------------------
     //  ゲージ減少
     //-------------------------------------------------------------------------
@@ -110,7 +107,6 @@ public class ColorGage : MonoBehaviour
         //ペン変更
         ChangeColor();
     }
-
     //-------------------------------------------------------------------------
     //  ゲージ回復
     //-------------------------------------------------------------------------
@@ -158,10 +154,10 @@ public class ColorGage : MonoBehaviour
     {
         //ペンを使えなく
         TouchManager.instance.IsTouch(false);
-        SoundManager.instance.PlayStop_Pen();
 
-        if (GameManager.ClearFlg) return;
+        if (GameManager.instance.ClearFlg) return;
         //ゲームオーバーイメージの表示
+        GameManager.instance.GameOver();
         gameOverImage.SetActive(true);
     }
 }
