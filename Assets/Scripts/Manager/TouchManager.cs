@@ -41,7 +41,11 @@ public class TouchManager : MonoBehaviour
         if (Input.GetMouseButton(0))
             Touch();
         else
+        {
             touchObj = null;
+            SoundManager.instance.PlayStop_Pen();
+        }
+            
     }
 
     //-------------------------------------------------------------------------
@@ -57,10 +61,17 @@ public class TouchManager : MonoBehaviour
         if(Physics.Raycast(ray, out hit, 100.0f, layerMask))
         {
             //RayHit呼び出し
-            PixAcces pix = hit.collider.GetComponent<PixAcces>();
-            pix.RayHit(hit.textureCoord * 256, hit.collider.gameObject == touchObj);
+            if (hit.collider.gameObject == touchObj) hit.collider.SendMessage("RayHitCon", hit.textureCoord * 256);
+            else hit.collider.SendMessage("RayHit", hit.textureCoord * 256);
 
             touchObj = hit.collider.gameObject;
+
+            //音再生
+            SoundManager.instance.PlayBack_Pen();
+        }
+        else
+        {
+            SoundManager.instance.PlayStop_Pen();
         }
     }
 

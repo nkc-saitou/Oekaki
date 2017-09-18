@@ -518,6 +518,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a68e4963870e3c54fb20502b9fab16ed, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a68e4963870e3c54fb20502b9fab16ed, type: 3}
   m_IsPrefabParent: 0
@@ -1673,6 +1677,10 @@ Prefab:
     - target: {fileID: 100000, guid: 646421a1b59cc1f4fb80fab8ea625880, type: 3}
       propertyPath: m_Name
       value: ClearDoriru
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 646421a1b59cc1f4fb80fab8ea625880, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 646421a1b59cc1f4fb80fab8ea625880, type: 3}

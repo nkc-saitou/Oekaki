@@ -41,42 +41,6 @@ public class PixAcces : MonoBehaviour
         drawTexture.filterMode = FilterMode.Point;
     }
 
-    void Update()
-    {
-        //if (Input.GetMouseButton(0) && isPenUse)//
-        //{
-        //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);//
-        //    RaycastHit hit;//
-        //    if (Physics.Raycast(ray, out hit, 100.0f))//
-        //    {
-        //        if (gameObject.GetInstanceID() == hit.collider.gameObject.GetInstanceID())//
-        //        {
-        //            Vector2 point = hit.textureCoord * 256;
-
-        //            if (touching)
-        //                DrawLine(point, beforePoint);
-        //            else
-        //                Draw(point);
-
-        //            beforePoint = point;
-        //            touching = true;
-        //        }
-        //        else
-        //        {
-        //            touching = false;
-        //        }
-        //    }
-
-        //    drawTexture.SetPixels(buffer);
-        //    drawTexture.Apply();
-        //    renderer.material.mainTexture = drawTexture;
-        //}
-        //else
-        //{
-        //    touching = false;
-        //}
-    }
-
     //-------------------------------------------------------------------------
     //  塗るメソッド
     //-------------------------------------------------------------------------
@@ -106,16 +70,6 @@ public class PixAcces : MonoBehaviour
         }
     }
 
-    public void DrawLine(Vector2 p, Vector2 q)
-    {
-        int lerpNum = 10;
-        for (int i = 0; i < lerpNum + 1; i++)
-        {
-            Vector2 r = Vector2.Lerp(p, q, i * (1.0f / lerpNum));
-            Draw(r);
-        }
-    }
-
     //-------------------------------------------------------------------------
     //  カウントをチェック
     //-------------------------------------------------------------------------
@@ -127,11 +81,24 @@ public class PixAcces : MonoBehaviour
     //-------------------------------------------------------------------------
     //  RayHit
     //-------------------------------------------------------------------------
-    public void RayHit(Vector2 point, bool touching)
+    void RayHit(Vector2 point)
     {
         //描く
-        if (touching) DrawLine(point, beforePoint);
-        else Draw(point);
+        Draw(point);
+        //位置を記憶
+        beforePoint = point;
+
+        //反映
+        drawTexture.SetPixels(buffer);
+        drawTexture.Apply();
+        renderer.material.mainTexture = drawTexture;
+    }
+
+    void RayHitCon(Vector2 point)
+    {
+        //描く
+        Draw(point);
+        //DrawLine(point, beforePoint);
         //位置を記憶
         beforePoint = point;
 

@@ -32,7 +32,12 @@ public class SoundManager : MonoBehaviour
             seSource[i].volume = 0.6f;
             seSource[i].loop = false;
         }
-        
+
+        //Pen
+        penSource = gameObject.AddComponent<AudioSource>();
+        penSource.volume = 0.7f;
+        penSource.loop = true;
+        penSource.clip = penSound;
     }
 
     //-------------------------------------------------------------------------
@@ -74,6 +79,12 @@ public class SoundManager : MonoBehaviour
             }
         }
     }
+
+    public void PlayBack_Pen()
+    {
+        if(!penSource.isPlaying) penSource.Play();
+    }
+    public void PlayStop_Pen() { penSource.Stop(); }
 
     //-------------------------------------------------------------------------
     //  enum

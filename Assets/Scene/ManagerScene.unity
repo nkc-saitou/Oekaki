@@ -193,3 +193,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmSound: []
   seSound: []
+  penSound: {fileID: 8300000, guid: 6047a9d5a7af33f4894dd7c51152d794, type: 3}
