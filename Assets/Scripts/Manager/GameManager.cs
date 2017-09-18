@@ -54,4 +54,20 @@ public class GameManager : MonoBehaviour
         if (clearFlg) return;
         gameOverFlg = true;
     }
+
+    public void GameSet()
+    {
+        clearFlg = false;
+        gameOverFlg = false;
+    }
+
+    void Update()
+    {
+        if (clearFlg == false && gameOverFlg == false) return;
+
+        if(Input.GetMouseButtonDown(0))
+        {
+            SceneOption.Instance.LoadScene("SelectScene", 1);
+        }
+    }
 }

@@ -87,6 +87,7 @@ public class SceneOption : MonoBehaviour {
             yield return 0;
         }
 
+        GameManager.instance.GameSet();
         //シーン切替 .
         SceneManager.LoadScene(scene);
 
