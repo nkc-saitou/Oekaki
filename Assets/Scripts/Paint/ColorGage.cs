@@ -63,7 +63,6 @@ public class ColorGage : MonoBehaviour
     //-------------------------------------------------------------------------
     //  ペン変更
     //-------------------------------------------------------------------------
-
     void ChangeColor()
     {
         //ペンの色変更
@@ -74,7 +73,6 @@ public class ColorGage : MonoBehaviour
     //-------------------------------------------------------------------------
     //  ゲージ減少
     //-------------------------------------------------------------------------
-
     public void GageDown()
     {
         //ゲージ消費
@@ -158,7 +156,12 @@ public class ColorGage : MonoBehaviour
     //-------------------------------------------------------------------------
     void GameOver()
     {
+        //ペンを使えなく
         TouchManager.instance.IsTouch(false);
+        SoundManager.instance.PlayStop_Pen();
+
+        if (GameManager.ClearFlg) return;
+        //ゲームオーバーイメージの表示
         gameOverImage.SetActive(true);
     }
 }
