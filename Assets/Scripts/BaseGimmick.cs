@@ -83,7 +83,7 @@ public class BaseGimmick : MonoBehaviour {
         float border = 20;
 
         objPos = gameObject.transform.localPosition;
-        dx += speed * Time.deltaTime;
+        dx -= speed * Time.deltaTime;
         objPos.x += dx;
         gameObject.transform.localPosition = objPos;
 
