@@ -19,7 +19,6 @@ public class PixAcces : MonoBehaviour
     Texture2D drawTexture;
     Color[] buffer;
 
-    bool touching;
     Vector2 beforePoint;
 
     ColorGage colorGage;
@@ -44,40 +43,38 @@ public class PixAcces : MonoBehaviour
 
     void Update()
     {
-        return;
+        //if (Input.GetMouseButton(0) && isPenUse)//
+        //{
+        //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);//
+        //    RaycastHit hit;//
+        //    if (Physics.Raycast(ray, out hit, 100.0f))//
+        //    {
+        //        if (gameObject.GetInstanceID() == hit.collider.gameObject.GetInstanceID())//
+        //        {
+        //            Vector2 point = hit.textureCoord * 256;
 
-        if (Input.GetMouseButton(0) && isPenUse)//
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);//
-            RaycastHit hit;//
-            if (Physics.Raycast(ray, out hit, 100.0f))//
-            {
-                if (gameObject.GetInstanceID() == hit.collider.gameObject.GetInstanceID())//
-                {
-                    Vector2 point = hit.textureCoord * 256;
+        //            if (touching)
+        //                DrawLine(point, beforePoint);
+        //            else
+        //                Draw(point);
 
-                    if (touching)
-                        DrawLine(point, beforePoint);
-                    else
-                        Draw(point);
+        //            beforePoint = point;
+        //            touching = true;
+        //        }
+        //        else
+        //        {
+        //            touching = false;
+        //        }
+        //    }
 
-                    beforePoint = point;
-                    touching = true;
-                }
-                else
-                {
-                    touching = false;
-                }
-            }
-
-            drawTexture.SetPixels(buffer);
-            drawTexture.Apply();
-            renderer.material.mainTexture = drawTexture;
-        }
-        else
-        {
-            touching = false;
-        }
+        //    drawTexture.SetPixels(buffer);
+        //    drawTexture.Apply();
+        //    renderer.material.mainTexture = drawTexture;
+        //}
+        //else
+        //{
+        //    touching = false;
+        //}
     }
 
     //-------------------------------------------------------------------------
@@ -130,10 +127,11 @@ public class PixAcces : MonoBehaviour
     //-------------------------------------------------------------------------
     //  RayHit
     //-------------------------------------------------------------------------
-    void RayHit(Vector2 point)
+    public void RayHit(Vector2 point, bool touching)
     {
         //描く
-        Draw(point);
+        if (touching) DrawLine(point, beforePoint);
+        else Draw(point);
         //位置を記憶
         beforePoint = point;
 

@@ -44,15 +44,17 @@ public class SoundManager : MonoBehaviour
     AudioClip[] bgmSound;
     [SerializeField]
     AudioClip[] seSound;
+    [SerializeField]
+    AudioClip penSound;
 
     //AudioSource
     AudioSource bgmSource;
     AudioSource[] seSource = new AudioSource[3];
+    AudioSource penSource;
 
     //-------------------------------------------------------------------------
     //  音再生
     //-------------------------------------------------------------------------
-
     public void PlayBack_BGM(int no)
     {
         bgmSource.clip = bgmSound[no];
@@ -71,5 +73,18 @@ public class SoundManager : MonoBehaviour
                 break;
             }
         }
+    }
+
+    //-------------------------------------------------------------------------
+    //  enum
+    //-------------------------------------------------------------------------
+    public enum BGM
+    {
+        Title = 0,
+        Game
+    }
+
+    public enum SE
+    {
     }
 }

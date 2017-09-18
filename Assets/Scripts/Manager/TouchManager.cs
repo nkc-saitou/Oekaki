@@ -30,16 +30,18 @@ public class TouchManager : MonoBehaviour
     [SerializeField]
     LayerMask layerMask;
 
+    GameObject touchObj;
+
     //=========================================================================
 
     void Update()
     {
         if (!isTouch) return;
 
-        if(Input.GetMouseButton(0))
-        {
+        if (Input.GetMouseButton(0))
             Touch();
-        }
+        else
+            touchObj = null;
     }
 
     //-------------------------------------------------------------------------
@@ -55,7 +57,10 @@ public class TouchManager : MonoBehaviour
         if(Physics.Raycast(ray, out hit, 100.0f, layerMask))
         {
             //RayHit呼び出し
-            hit.collider.SendMessage("RayHit", hit.textureCoord * 256);
+            PixAcces pix = hit.collider.GetComponent<PixAcces>();
+            pix.RayHit(hit.textureCoord * 256, hit.collider.gameObject == touchObj);
+
+            touchObj = hit.collider.gameObject;
         }
     }
 
