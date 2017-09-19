@@ -234,7 +234,7 @@ MonoBehaviour:
   bgmSound:
   - {fileID: 8300000, guid: a732c12d1ba8ad545bda20e128342194, type: 3}
   seSound: []
-  penSound: {fileID: 8300000, guid: 6047a9d5a7af33f4894dd7c51152d794, type: 3}
+  penSound: {fileID: 8300000, guid: 57f9686a2f673c049a8275f2f18dcf86, type: 3}
 --- !u!1 &1458718250
 GameObject:
   m_ObjectHideFlags: 0
