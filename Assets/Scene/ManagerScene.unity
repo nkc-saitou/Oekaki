@@ -231,7 +231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe37495f55a46b04b8d55c99cf7ee4fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmSound: []
+  bgmSound:
+  - {fileID: 8300000, guid: a732c12d1ba8ad545bda20e128342194, type: 3}
   seSound: []
   penSound: {fileID: 8300000, guid: 6047a9d5a7af33f4894dd7c51152d794, type: 3}
 --- !u!1 &1458718250
