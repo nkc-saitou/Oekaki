@@ -61,19 +61,19 @@ public class SoundManager : MonoBehaviour
     //-------------------------------------------------------------------------
     //  音再生
     //-------------------------------------------------------------------------
-    public void PlayBack_BGM(int no)
+    public void PlayBack_BGM(BGM sound)
     {
-        bgmSource.clip = bgmSound[no];
+        bgmSource.clip = bgmSound[(int)sound];
         bgmSource.Play();
     }
 
-    public void PlayBack_SE(int no)
+    public void PlayBack_SE(SE sound)
     {
         foreach(AudioSource audio in seSource)
         {
             if(!audio.isPlaying)
             {
-                audio.clip = seSound[no];
+                audio.clip = seSound[(int)sound];
                 audio.Play();
 
                 break;
@@ -97,5 +97,9 @@ public class SoundManager : MonoBehaviour
 
     public enum SE
     {
+        Car = 0,
+        Doril,
+        Clear,
+        GameOver
     }
 }

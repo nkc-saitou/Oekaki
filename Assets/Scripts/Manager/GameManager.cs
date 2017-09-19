@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
     {
         clearFlg = false;
         gameOverFlg = false;
+        TouchManager.instance.IsTouch(true);
     }
 
     void Update()
