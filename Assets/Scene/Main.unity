@@ -367,6 +367,28 @@ MonoBehaviour:
   - {fileID: 432166931}
   happaTrigger: 3200000050000000
   colorGage: {fileID: 2147248019}
+--- !u!1 &592707940 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1960463280834320, guid: 390dd0565acab944a94b2be9e5b6ec87,
+    type: 2}
+  m_PrefabInternal: {fileID: 1606400242}
+--- !u!95 &592707948
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 592707940}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 68eefea115fce7845aafa0bab645e4a0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &609828630
 GameObject:
   m_ObjectHideFlags: 0

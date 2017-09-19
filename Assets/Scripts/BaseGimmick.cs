@@ -19,7 +19,7 @@ public class BaseGimmick : MonoBehaviour {
 
     int pixelsPaint = 0; //どれだけ塗れたかのパーセンテージ
 
-    Vector3 objPos;
+    Vector3 objPos; 
 
     void Start()
     {
