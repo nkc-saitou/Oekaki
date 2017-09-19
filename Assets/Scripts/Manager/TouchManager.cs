@@ -54,7 +54,7 @@ public class TouchManager : MonoBehaviour
         if(Physics.Raycast(ray, out hit, 100.0f, layerMask))
         {
             //RayHit呼び出し
-            hit.collider.SendMessage("RayHit", hit.textureCoord * 256);
+            if(hit.collider.tag != "Obs") hit.collider.SendMessage("RayHit", hit.textureCoord * 256);
         }
     }
 

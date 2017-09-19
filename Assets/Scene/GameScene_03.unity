@@ -242,9 +242,9 @@ GameObject:
   m_Component:
   - component: {fileID: 300396082}
   - component: {fileID: 300396083}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: nawa_0
-  m_TagString: Untagged
+  m_TagString: Obs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -778,9 +778,9 @@ GameObject:
   - component: {fileID: 944489230}
   - component: {fileID: 944489229}
   - component: {fileID: 944489228}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Obs
-  m_TagString: Untagged
+  m_TagString: Obs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1704,6 +1704,38 @@ Prefab:
     - target: {fileID: 4202609474204568, guid: 522646612abd8ed49907524a8cb62b08, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413017305678956, guid: 522646612abd8ed49907524a8cb62b08, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166988621746936, guid: 522646612abd8ed49907524a8cb62b08, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855259774092070, guid: 522646612abd8ed49907524a8cb62b08, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1622968727354272, guid: 522646612abd8ed49907524a8cb62b08, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413017305678956, guid: 522646612abd8ed49907524a8cb62b08, type: 2}
+      propertyPath: m_TagString
+      value: Obs
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166988621746936, guid: 522646612abd8ed49907524a8cb62b08, type: 2}
+      propertyPath: m_TagString
+      value: Obs
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855259774092070, guid: 522646612abd8ed49907524a8cb62b08, type: 2}
+      propertyPath: m_TagString
+      value: Obs
+      objectReference: {fileID: 0}
+    - target: {fileID: 1622968727354272, guid: 522646612abd8ed49907524a8cb62b08, type: 2}
+      propertyPath: m_TagString
+      value: Obs
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 522646612abd8ed49907524a8cb62b08, type: 2}

@@ -34,7 +34,7 @@ public class Flower : MonoBehaviour {
         //現在のオブジェクトの位置を代入
         offset = gameObject.transform.localPosition;
 
-        // x += SPEED * cos(ラジアン)
+        //x += SPEED * cos(ラジアン)
         // y += SPEED * sin(ラジアン)
         offset.x += speed * Time.deltaTime * Mathf.Cos(rad);
         offset.y += speed * Time.deltaTime * Mathf.Sin(rad);

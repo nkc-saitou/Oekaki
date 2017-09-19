@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gimmick_Handle : BaseGimmick {
+public class Gimmick_Handle : BaseGimmick
+{
+    const float HANDLE_BORDER = 7.0f;
 
     public GameObject Handle;
     Vector3 HandlePos;
@@ -10,6 +12,8 @@ public class Gimmick_Handle : BaseGimmick {
 
     public override void GimmickActivate()
     {
+        if (Handle.transform.position.y >= HANDLE_BORDER) return;
+
         transform.Rotate(new Vector3(0, 0, 2));
 
         HandlePos = Handle.transform.position;
