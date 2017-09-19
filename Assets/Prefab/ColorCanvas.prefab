@@ -78,7 +78,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 640, y: 360}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.5
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cccec0001f4bb9d498f77e49cf6e53a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverImage: {fileID: 0}
   data: {fileID: 11400000, guid: 80e536807962c3e479ed8dd9f278e26e, type: 2}
   colorGages: {fileID: 224646387767721520}
   gageSample: {fileID: 224530465080483398, guid: edd553e0f94eba14096dfefc290bf29c,

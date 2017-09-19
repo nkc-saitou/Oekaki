@@ -41,8 +41,7 @@ public class ColorGage : MonoBehaviour
         for (int i = 0; i < data.colorArr.Length; i++)
         {
             //生成
-            RectTransform gage = Instantiate(gageSample);
-            gage.SetParent(colorGages);
+            RectTransform gage = Instantiate(gageSample, colorGages);
             gage.SetAsFirstSibling();
 
             //大きさと位置を調整
@@ -131,8 +130,7 @@ public class ColorGage : MonoBehaviour
             penColorArr[gageArr.Count] = color;
 
             //生成
-            RectTransform gage = Instantiate(gageSample);
-            gage.SetParent(colorGages);
+            RectTransform gage = Instantiate(gageSample, colorGages);
             gage.SetAsFirstSibling();
 
             //大きさと位置を調整
