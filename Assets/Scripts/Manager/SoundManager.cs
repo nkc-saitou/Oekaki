@@ -25,6 +25,7 @@ public class SoundManager : MonoBehaviour
         bgmSource = gameObject.AddComponent<AudioSource>();
         bgmSource.volume = 0.3f;
         bgmSource.loop = true;
+        PlayBack_BGM(BGM.Title);
 
         //SE
         for(int i = 0; i < seSource.Length; i++)
