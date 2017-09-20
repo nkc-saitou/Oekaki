@@ -137,7 +137,7 @@ PlayerSettings:
   protectGraphicsMemory: 0
   useHDRDisplay: 0
   applicationIdentifier:
-    Android: com.Company.Oekaki
+    Android: com.gpureturns.IroDoril
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
@@ -213,8 +213,8 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: C:/Users/user/Documents/Unity5 data/IroDoril/keystore/user.keystore
+  AndroidKeyaliasName: irodoril
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   androidEnableBanner: 1
