@@ -40,5 +40,8 @@ public class SceneButton : MonoBehaviour {
                 SceneOption.Instance.LoadScene("GameScene_03", 1);
                 break;
         }
+
+        //BGM切り替え
+        SoundManager.instance.PlayBack_BGM(SoundManager.BGM.Game);
     }
 }

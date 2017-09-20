@@ -69,6 +69,8 @@ public class GameManager : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             SceneOption.Instance.LoadScene("SelectScene", 1);
+            //BGM切り替え
+            SoundManager.instance.PlayBack_BGM(SoundManager.BGM.TitleSelect);
         }
     }
 }

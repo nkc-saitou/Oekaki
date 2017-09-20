@@ -233,8 +233,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmSound:
   - {fileID: 8300000, guid: a732c12d1ba8ad545bda20e128342194, type: 3}
-  seSound: []
-  penSound: {fileID: 8300000, guid: 57f9686a2f673c049a8275f2f18dcf86, type: 3}
+  - {fileID: 8300000, guid: 37f9cd9e88ba8d14bbd32d5cdaa4b36d, type: 3}
+  seSound:
+  - {fileID: 8300000, guid: 6d433c7b7925f934fab95d80b0de6779, type: 3}
+  - {fileID: 8300000, guid: e377e78831fb2d04ca524823d956c51b, type: 3}
+  penSound: {fileID: 8300000, guid: 1d9a2300c35536544992219f6a97b3b2, type: 3}
 --- !u!1 &1458718250
 GameObject:
   m_ObjectHideFlags: 0

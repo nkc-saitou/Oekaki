@@ -658,6 +658,7 @@ GameObject:
   - component: {fileID: 764978094}
   - component: {fileID: 764978093}
   - component: {fileID: 764978092}
+  - component: {fileID: 764978095}
   m_Layer: 0
   m_Name: TitleCar
   m_TagString: Untagged
@@ -735,6 +736,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &764978095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 764978091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 440394609901a0049ac3eaa47d65d816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1347628049
 GameObject:
   m_ObjectHideFlags: 0

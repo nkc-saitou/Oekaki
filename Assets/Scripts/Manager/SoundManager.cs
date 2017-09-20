@@ -25,7 +25,7 @@ public class SoundManager : MonoBehaviour
         bgmSource = gameObject.AddComponent<AudioSource>();
         bgmSource.volume = 0.3f;
         bgmSource.loop = true;
-        PlayBack_BGM(BGM.Title);
+        PlayBack_BGM(BGM.TitleSelect);
 
         //SE
         for(int i = 0; i < seSource.Length; i++)
@@ -37,7 +37,7 @@ public class SoundManager : MonoBehaviour
 
         //Pen
         penSource = gameObject.AddComponent<AudioSource>();
-        penSource.volume = 0.7f;
+        penSource.volume = 0.8f;
         penSource.loop = false;
         penSource.clip = penSound;
     }
@@ -92,14 +92,14 @@ public class SoundManager : MonoBehaviour
     //-------------------------------------------------------------------------
     public enum BGM
     {
-        Title = 0,
+        TitleSelect = 0,
         Game
     }
 
     public enum SE
     {
         Car = 0,
-        Doril,
+        Leaf,
         Clear,
         GameOver
     }

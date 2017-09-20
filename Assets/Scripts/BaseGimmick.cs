@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BaseGimmick : MonoBehaviour {
 
-
     //------------------------------------------
     // public
     //------------------------------------------
@@ -14,6 +13,9 @@ public class BaseGimmick : MonoBehaviour {
     //------------------------------------------
     // private
     //------------------------------------------
+
+    [SerializeField]
+    SoundManager.SE gimmickSE;
 
     PixCheck pixCheck;
 
@@ -80,7 +82,7 @@ public class BaseGimmick : MonoBehaviour {
         //オブジェクトを動かす
         float dx = 0;
         float speed = 15.0f;
-        float border = 20;
+        float border = -20;
 
         objPos = gameObject.transform.localPosition;
         dx -= speed * Time.deltaTime;
@@ -88,10 +90,13 @@ public class BaseGimmick : MonoBehaviour {
         gameObject.transform.localPosition = objPos;
 
         //border以上動いたらオブジェクトを削除する
-        if (objPos.x > border)
+        if (objPos.x < border)
         {
             Destroy(gameObject);
         }
+
+        //音再生
+        SoundManager.instance.PlayBack_SE(gimmickSE);
     }
 
     public virtual void BorderSetting()
