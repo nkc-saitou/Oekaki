@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     bool clearFlg = false;
     bool gameOverFlg = false;
 
+    bool waitFlg = false;
+
     //-------------------------------------------------------------------------
     // プロパティ
     //-------------------------------------------------------------------------
@@ -41,6 +43,21 @@ public class GameManager : MonoBehaviour
         get { return gameOverFlg; }
     }
 
+    //=========================================================================
+
+    void Update()
+    {
+        if (clearFlg == false && gameOverFlg == false) return;
+        if (waitFlg) return;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            SceneOption.Instance.LoadScene("SelectScene", 1);
+            //BGM切り替え
+            SoundManager.instance.PlayBack_BGM(SoundManager.BGM.TitleSelect);
+        }
+    }
+
     //-------------------------------------------------------------------------
     //  Public
     //-------------------------------------------------------------------------
@@ -48,11 +65,17 @@ public class GameManager : MonoBehaviour
     {
         if (gameOverFlg) return;
         clearFlg = true;
+        //音再生
+        SoundManager.instance.PlayBack_SE(SoundManager.SE.Clear);
     }
     public void GameOver()
     {
         if (clearFlg) return;
         gameOverFlg = true;
+        //音再生
+        SoundManager.instance.PlayBack_SE(SoundManager.SE.GameOver);
+        //待つ
+        StartCoroutine(WaitTime(2.0f));
     }
 
     public void GameSet()
@@ -61,16 +84,13 @@ public class GameManager : MonoBehaviour
         gameOverFlg = false;
         TouchManager.instance.IsTouch(true);
     }
-
-    void Update()
+    //-------------------------------------------------------------------------
+    //  Wait
+    //-------------------------------------------------------------------------
+    IEnumerator WaitTime(float time)
     {
-        if (clearFlg == false && gameOverFlg == false) return;
-
-        if(Input.GetMouseButtonDown(0))
-        {
-            SceneOption.Instance.LoadScene("SelectScene", 1);
-            //BGM切り替え
-            SoundManager.instance.PlayBack_BGM(SoundManager.BGM.TitleSelect);
-        }
+        waitFlg = true;
+        yield return new WaitForSeconds(time);
+        waitFlg = false;
     }
 }

@@ -596,7 +596,7 @@ MonoBehaviour:
   - {fileID: 1801921031}
   happaTrigger: 1400000032000000
   flowerObj: {fileID: 783953234}
-  gageHeal: 100
+  gageHeal: 50
   colorGage: {fileID: 2147248019}
   penDate: {fileID: 11400000, guid: 80e536807962c3e479ed8dd9f278e26e, type: 2}
 --- !u!95 &825555387
@@ -1597,6 +1597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shakeX: 0.02
+  gimmickSE: 0
   Handle: {fileID: 944489227}
 --- !u!114 &1901908732
 MonoBehaviour:

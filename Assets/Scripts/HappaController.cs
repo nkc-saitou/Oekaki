@@ -28,6 +28,8 @@ public class HappaController : MonoBehaviour {
 
     public PenData penDate;
 
+    bool[] soundCheck = { true, true };
+
     //=============================================================
 
 	void Start ()
@@ -36,6 +38,7 @@ public class HappaController : MonoBehaviour {
         anim.SetTrigger("grow");
         flowerObj.SetActive(false);
 
+        SoundManager.instance.PlayBack_SE(SoundManager.SE.Leaf);
     }
 	
 	void Update ()
@@ -52,6 +55,13 @@ public class HappaController : MonoBehaviour {
         if (pixCheck.PixelsPaint >= happaTrigger[0])
         {
             happaAnim[0].SetTrigger("grow");
+
+            //効果音
+            if(soundCheck[0])
+            {
+                SoundManager.instance.PlayBack_SE(SoundManager.SE.Leaf);
+                soundCheck[0] = false;
+            }
         }
         //二段目の芽
         if (pixCheck.PixelsPaint >= happaTrigger[1] && gageHealFlg)
@@ -64,6 +74,13 @@ public class HappaController : MonoBehaviour {
             colorGage.GageHeal(penDate.colorArr[colorRandom], gageHeal);
 
             gageHealFlg = false;
+
+            //効果音
+            if (soundCheck[1])
+            {
+                SoundManager.instance.PlayBack_SE(SoundManager.SE.Leaf);
+                soundCheck[1] = false;
+            }
         }
     }
 }

@@ -23,7 +23,7 @@ public class SoundManager : MonoBehaviour
 
         //BGM
         bgmSource = gameObject.AddComponent<AudioSource>();
-        bgmSource.volume = 0.3f;
+        bgmSource.volume = 0.5f;
         bgmSource.loop = true;
         PlayBack_BGM(BGM.TitleSelect);
 
@@ -31,7 +31,7 @@ public class SoundManager : MonoBehaviour
         for(int i = 0; i < seSource.Length; i++)
         {
             seSource[i] = gameObject.AddComponent<AudioSource>();
-            seSource[i].volume = 0.6f;
+            seSource[i].volume = 0.7f;
             seSource[i].loop = false;
         }
 
@@ -51,7 +51,7 @@ public class SoundManager : MonoBehaviour
     AudioClip[] bgmSound;
     [SerializeField]
     AudioClip[] seSound;
-    [SerializeField]
+    [SerializeField, Space]
     AudioClip penSound;
 
     //AudioSource
