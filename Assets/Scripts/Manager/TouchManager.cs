@@ -30,8 +30,6 @@ public class TouchManager : MonoBehaviour
     [SerializeField]
     LayerMask layerMask;
 
-    GameObject touchObj;
-
     //=========================================================================
     void Update()
     {
