@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddComponentMenu("Scripts/Gimmick/FishController")]
 public class FishController : MonoBehaviour
 {
 

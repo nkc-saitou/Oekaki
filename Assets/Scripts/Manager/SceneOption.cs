@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[AddComponentMenu("Scripts/Manager/SceneOption")]
 public class SceneOption : MonoBehaviour {
 
     #region Singleton

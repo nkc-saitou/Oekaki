@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddComponentMenu("Scripts/Gimmick/Gimmick_Handle")]
 public class Gimmick_Handle : BaseGimmick
 {
     const float HANDLE_BORDER = 7.0f;
