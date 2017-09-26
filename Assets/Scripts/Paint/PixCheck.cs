@@ -9,6 +9,7 @@ public class PixCheck : MonoBehaviour {
     //------------------------------------------------
     // private
     //------------------------------------------------
+    new Renderer renderer;
 
     Texture2D mainTexture;
     Color[] pixels;
@@ -31,6 +32,7 @@ public class PixCheck : MonoBehaviour {
 
     void Start ()
     {
+        renderer = GetComponent<Renderer>();
         whitePixelsCheck();
         filstWhitePixels = whitePixels;
     }
@@ -52,7 +54,7 @@ public class PixCheck : MonoBehaviour {
     //------------------------------------------------
     void whitePixelsCheck()
     {
-        mainTexture = (Texture2D)GetComponent<Renderer>().material.mainTexture;
+        mainTexture = (Texture2D)renderer.material.mainTexture;
         pixels = mainTexture.GetPixels();
 
         int whiteCount = 0; //白ピクセル
