@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddComponentMenu("Scripts/Gimmick/HappaController")]
 public class HappaController : MonoBehaviour {
 
     //------------------------------------------

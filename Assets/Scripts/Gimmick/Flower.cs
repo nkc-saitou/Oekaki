@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddComponentMenu("Scripts/Gimmick/Flower")]
 public class Flower : MonoBehaviour {
 
     public GameObject block;

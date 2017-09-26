@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddComponentMenu("Scripts/Gimmick/Obstacle")]
 public class Obstacle : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[AddComponentMenu("Scripts/Manager/ManagerSceneAutoLoader")]
 public class ManagerSceneAutoLoader : MonoBehaviour
 {
     //ゲーム開始時(シーン読み込み前)に実行される
