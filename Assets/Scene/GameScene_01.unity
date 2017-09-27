@@ -322,6 +322,7 @@ GameObject:
   - component: {fileID: 609828631}
   - component: {fileID: 609828636}
   - component: {fileID: 609828637}
+  - component: {fileID: 609828638}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -434,6 +435,17 @@ MonoBehaviour:
     normalBlendType: 0
     heightBlendType: 0
   useMethodType: 0
+--- !u!114 &609828638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 609828630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb95e03d00b893a41bcf16b083ee5b0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &659283219 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114060632799119390, guid: fb8c354a12262d345a07bf3f01450a02,
@@ -1167,7 +1179,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4632505995955788, guid: 5ebdb8d37ea6c1d40b5b81605d267ac3, type: 2}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 4632505995955788, guid: 5ebdb8d37ea6c1d40b5b81605d267ac3, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
