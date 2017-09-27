@@ -518,7 +518,7 @@ namespace Es.InkPainter
 
 			foreach(var p in paintSet)
 			{
-				if(p.useMainPaint && brush.BrushTexture != null && p.paintMainTexture != null && p.paintMainTexture.IsCreated())
+				if(p.useMainPaint && brush.BrushTexture != null && p.paintMainTexture != null && p.paintMainTexture.IsCreated())    //書いてる？
 				{
 					var mainPaintTextureBuffer = RenderTexture.GetTemporary(p.paintMainTexture.width, p.paintMainTexture.height, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.Linear);
 					SetPaintMainData(brush, uv);
@@ -608,6 +608,7 @@ namespace Es.InkPainter
 					Debug.LogWarning("If you want to paint using a Raycast, need set MeshCollider for canvas object.");
 					return PaintNearestTriangleSurface(brush, hitInfo.point);
 				}
+                //書く処理
 				return PaintUVDirect(brush, hitInfo.textureCoord);
 			}
 			return false;
