@@ -14,7 +14,7 @@ public class BrushButton : MonoBehaviour
 
     [SerializeField]
     RectTransform[] brushs = new RectTransform[3];  //0:L, 1:M, 2:S
-    float[] brushScales = { 0.15f, 0.1f, 0.05f };
+    float[] brushScales = { 0.2f, 0.1f, 0.05f };
 
     //筆の番号
     int selectNo = 1;
