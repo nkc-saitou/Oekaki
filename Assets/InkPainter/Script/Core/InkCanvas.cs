@@ -603,7 +603,7 @@ namespace Es.InkPainter
 		{
 			if(hitInfo.collider != null && hitInfo.collider.gameObject == gameObject)
 			{
-				if(!(GetComponent<Collider>() is MeshCollider))
+                if (!(GetComponent<Collider>() is MeshCollider))
 				{
 					Debug.LogWarning("If you want to paint using a Raycast, need set MeshCollider for canvas object.");
 					return PaintNearestTriangleSurface(brush, hitInfo.point);

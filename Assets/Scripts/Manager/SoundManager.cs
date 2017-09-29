@@ -100,6 +100,7 @@ public class SoundManager : MonoBehaviour
     {
         Car = 0,
         Leaf,
+        Ink,
         Clear,
         GameOver
     }

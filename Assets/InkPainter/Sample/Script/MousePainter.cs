@@ -22,7 +22,10 @@ namespace Es.InkPainter.Sample
 		[SerializeField]
 		private UseMethodType useMethodType = UseMethodType.RaycastHitInfo;
 
-		private void Update()
+        //前回の位置
+        Vector3 beforePos;
+
+        private void Update()
 		{
 			if(Input.GetMouseButton(0))
 			{
@@ -33,39 +36,57 @@ namespace Es.InkPainter.Sample
 				{
 					var paintObject = hitInfo.transform.GetComponent<InkCanvas>();
 					if(paintObject != null)
-						switch(useMethodType)
-						{
-							case UseMethodType.RaycastHitInfo:
-								success = paintObject.Paint(brush, hitInfo);
-								break;
+                    {
+                        switch (useMethodType)
+                        {
+                            case UseMethodType.RaycastHitInfo:
+                                success = paintObject.Paint(brush, hitInfo);
+                                break;
 
-							case UseMethodType.WorldPoint:
-								success = paintObject.Paint(brush, hitInfo.point);
-								break;
+                            case UseMethodType.WorldPoint:
+                                success = paintObject.Paint(brush, hitInfo.point);
+                                break;
 
-							case UseMethodType.NearestSurfacePoint:
-								success = paintObject.PaintNearestTriangleSurface(brush, hitInfo.point);
-								break;
+                            case UseMethodType.NearestSurfacePoint:
+                                success = paintObject.PaintNearestTriangleSurface(brush, hitInfo.point);
+                                break;
 
-							case UseMethodType.DirectUV:
-								if(!(hitInfo.collider is MeshCollider))
-									Debug.LogWarning("Raycast may be unexpected if you do not use MeshCollider.");
-								success = paintObject.PaintUVDirect(brush, hitInfo.textureCoord);
-								break;
-						}
+                            case UseMethodType.DirectUV:
+                                if (!(hitInfo.collider is MeshCollider))
+                                    Debug.LogWarning("Raycast may be unexpected if you do not use MeshCollider.");
+                                success = paintObject.PaintUVDirect(brush, hitInfo.textureCoord);
+                                break;
+                        }
+
+                        //効果音(ペン)
+                        if (SoundCheck())
+                        {
+                            beforePos = Input.mousePosition;
+                            SoundManager.instance.PlayBack_Pen();
+                        }
+                    }
+						
 					if(!success)
 						Debug.LogError("Failed to paint.");
 				}
 			}
 		}
 
-		//public void OnGUI()
-		//{
-		//	if(GUILayout.Button("Reset"))
-		//	{
-		//		foreach(var canvas in FindObjectsOfType<InkCanvas>())
-		//			canvas.ResetPaint();
-		//	}
-		//}
-	}
+        //public void OnGUI()
+        //{
+        //	if(GUILayout.Button("Reset"))
+        //	{
+        //		foreach(var canvas in FindObjectsOfType<InkCanvas>())
+        //			canvas.ResetPaint();
+        //	}
+        //}
+
+        //-------------------------------------------------------------------------
+        //  判断
+        //-------------------------------------------------------------------------
+        bool SoundCheck()
+        {
+            return Input.GetMouseButton(0) && Input.mousePosition != beforePos;
+        }
+    }
 }

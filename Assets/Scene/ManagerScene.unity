@@ -237,6 +237,7 @@ MonoBehaviour:
   seSound:
   - {fileID: 8300000, guid: 6d433c7b7925f934fab95d80b0de6779, type: 3}
   - {fileID: 8300000, guid: e377e78831fb2d04ca524823d956c51b, type: 3}
+  - {fileID: 8300000, guid: 1d34753d60313584dbc1de9b56b55fc9, type: 3}
   - {fileID: 8300000, guid: 128d4d9e0cdcff34886cfe7557c18def, type: 3}
   - {fileID: 8300000, guid: 00c7dac028b736841938070f37c3f111, type: 3}
   penSound: {fileID: 8300000, guid: 1d9a2300c35536544992219f6a97b3b2, type: 3}
