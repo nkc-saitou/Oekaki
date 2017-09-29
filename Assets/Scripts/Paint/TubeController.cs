@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Es.InkPainter.Sample;
+
 [RequireComponent(typeof(Animator))]
 [AddComponentMenu("Scripts/Paint/TubeController")]
 public class TubeController : MonoBehaviour
@@ -15,22 +17,24 @@ public class TubeController : MonoBehaviour
     Animator animator;
 
     string selectTube = null;
+    bool flg = false;
 
     string[] parametars = { "DownRed", "DownGreen", "DownBlue", "CancelRed", "CancelGreen", "CancelBlue", "UpRed", "UpGreen", "UpBlue" };
 
     //=========================================================================
-
     void Start()
     {
         animator = GetComponent<Animator>();
     }
-
     //-------------------------------------------------------------------------
     //  Event
     //-------------------------------------------------------------------------
 
     public void DownTube(string tube)
     {
+        //ペンを使用不可に
+        MousePainter.isBrushUse = false;
+
         selectTube = tube;
         string trigger = "Down" + tube;
         animator.SetTrigger(trigger);
@@ -38,28 +42,32 @@ public class TubeController : MonoBehaviour
 
     public void UpTube(string tube)
     {
-        string trigger = "Up" + tube;
+        //ペンを使用可能に
+        MousePainter.isBrushUse = true;
+
+        string trigger = (flg) ? "Up" : "Cancel";
+        trigger += tube;
         animator.SetTrigger(trigger);
     }
 
-    public void CancelTube(string tube)
-    {
-        if (selectTube == null) return;
+    public void EnterTube() { flg = true; }
+    public void ExitTube() { flg = false; }
 
-        string trigger = "Cancel" + tube;
-        animator.SetTrigger(trigger);
-    }
     //-------------------------------------------------------------------------
     //  Animation
     //-------------------------------------------------------------------------
-
     public void ChangeColor()
     {
         //効果音
         SoundManager.instance.PlayBack_SE(SoundManager.SE.Ink);
-
-        //インクをセット
+        //インクをパレットにセット
         inkPut.SetColor(selectTube);
+        //ペンに色を反映
+        Color color = Color.white;
+        if (selectTube == "Red") color = Color.red;
+        else if (selectTube == "Green") color = Color.green;
+        else if (selectTube == "Blue") color = Color.blue;
+        MousePainter.brushColor = color;
 
         ResetTrigger();
     }

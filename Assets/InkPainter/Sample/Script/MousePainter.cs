@@ -25,9 +25,17 @@ namespace Es.InkPainter.Sample
         //前回の位置
         Vector3 beforePos;
 
+        //ペン情報
+        public static bool isBrushUse = true;
+        public static Color brushColor = Color.red;
+        public static float brushScale = 0.1f;
+
         private void Update()
 		{
-			if(Input.GetMouseButton(0))
+            if (brushColor != brush.Color) brush.Color = brushColor;
+            if (brushScale != brush.Scale) brush.Scale = brushScale;
+
+			if(isBrushUse && Input.GetMouseButton(0))
 			{
 				var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 				bool success = true;

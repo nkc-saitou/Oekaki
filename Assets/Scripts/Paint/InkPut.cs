@@ -14,7 +14,7 @@ public class InkPut : MonoBehaviour
     [SerializeField]
     RectTransform[] inks;   //0:Red, 1:Green, 2:Blue
 
-    int selectColor = -1;
+    int selectColor = 0;
 
     bool IsPut = false;
 
