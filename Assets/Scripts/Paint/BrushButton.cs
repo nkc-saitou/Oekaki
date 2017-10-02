@@ -56,6 +56,7 @@ public class BrushButton : MonoBehaviour
     //-------------------------------------------------------------------------
     public void ChangeBrush(int brushNo)
     {
+        if (Time.timeScale <= 0) return;
         //番号
         beforeNo = selectNo;
         selectNo = brushNo;

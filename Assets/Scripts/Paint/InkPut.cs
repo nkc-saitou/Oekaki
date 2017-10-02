@@ -15,6 +15,7 @@ public class InkPut : MonoBehaviour
     RectTransform[] inks;   //0:Red, 1:Green, 2:Blue
 
     int selectColor = 0;
+    int beforeColor = -1;
 
     bool isPut = false;
     bool isEmpty = false;
@@ -32,7 +33,9 @@ public class InkPut : MonoBehaviour
     public void SetColor(int colorNo)
     {
         if (selectColor == colorNo) return;
-        else selectColor = colorNo;
+        //色をセット
+        beforeColor = selectColor;
+        selectColor = colorNo;
 
         //準備
         inks[selectColor].gameObject.SetActive(true);
@@ -48,7 +51,11 @@ public class InkPut : MonoBehaviour
         inks[selectColor].localScale = new Vector3(upScale, upScale, upScale);
 
         //Scaleを確認
-        if (upScale == INKSIZE_MAX) isPut = false;
+        if (upScale == INKSIZE_MAX)
+        {
+            inks[beforeColor].gameObject.SetActive(false);
+            isPut = false;
+        }
     }
     //-------------------------------------------------------------------------
     //  空になった場合

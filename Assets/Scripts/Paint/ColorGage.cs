@@ -95,6 +95,7 @@ public class ColorGage : MonoBehaviour
     //-------------------------------------------------------------------------
     public void DownTube(string tube)
     {
+        if (Time.timeScale <= 0) return;
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle@Tube")) return;
 
         //ペンを使用不可に
@@ -110,6 +111,8 @@ public class ColorGage : MonoBehaviour
     }
     public void UpTube()
     {
+        if (Time.timeScale <= 0) return;
+
         //アニメーション
         string trigger = (flg) ? "Up" : "Cancel";
         trigger += selectTube.ToString();
