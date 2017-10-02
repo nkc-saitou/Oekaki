@@ -520,12 +520,12 @@ namespace Es.InkPainter
 			{
 				if(p.useMainPaint && brush.BrushTexture != null && p.paintMainTexture != null && p.paintMainTexture.IsCreated())    //書いてる？
 				{
-					var mainPaintTextureBuffer = RenderTexture.GetTemporary(p.paintMainTexture.width, p.paintMainTexture.height, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.Linear);
-					SetPaintMainData(brush, uv);
-					Graphics.Blit(p.paintMainTexture, mainPaintTextureBuffer, paintMainMaterial);
-					Graphics.Blit(mainPaintTextureBuffer, p.paintMainTexture);
-					RenderTexture.ReleaseTemporary(mainPaintTextureBuffer);
-				}
+                    var mainPaintTextureBuffer = RenderTexture.GetTemporary(p.paintMainTexture.width, p.paintMainTexture.height, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.Linear);
+                    SetPaintMainData(brush, uv);
+                    Graphics.Blit(p.paintMainTexture, mainPaintTextureBuffer, paintMainMaterial);
+                    Graphics.Blit(mainPaintTextureBuffer, p.paintMainTexture);
+                    RenderTexture.ReleaseTemporary(mainPaintTextureBuffer);
+                }
 
 				if(p.useNormalPaint && brush.BrushNormalTexture != null && p.paintNormalTexture != null && p.paintNormalTexture.IsCreated())
 				{
