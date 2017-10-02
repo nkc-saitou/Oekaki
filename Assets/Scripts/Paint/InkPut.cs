@@ -16,25 +16,21 @@ public class InkPut : MonoBehaviour
 
     int selectColor = 0;
 
-    bool IsPut = false;
+    bool isPut = false;
+    bool isEmpty = false;
 
     //=========================================================================
 	void Update ()
     {
         //色の変化
-        if (IsPut) ColorChangeMove();
+        if (isPut) ColorChangeMove();
+        if (isEmpty) ColorEmptyMove();
 	}
     //-------------------------------------------------------------------------
     //  色を変更
     //-------------------------------------------------------------------------
-    public void SetColor(string color)
+    public void SetColor(int colorNo)
     {
-        //番号に変換
-        int colorNo = 0;
-        if (color == "Red") colorNo = 0;
-        else if (color == "Green") colorNo = 1;
-        else if (color == "Blue") colorNo = 2;
-
         if (selectColor == colorNo) return;
         else selectColor = colorNo;
 
@@ -42,7 +38,7 @@ public class InkPut : MonoBehaviour
         inks[selectColor].gameObject.SetActive(true);
         inks[selectColor].localScale = new Vector3(0, 0, 0);
         inks[selectColor].SetAsLastSibling();
-        IsPut = true;
+        isPut = true;
     }
     void ColorChangeMove()
     {
@@ -52,6 +48,23 @@ public class InkPut : MonoBehaviour
         inks[selectColor].localScale = new Vector3(upScale, upScale, upScale);
 
         //Scaleを確認
-        if (upScale == INKSIZE_MAX) IsPut = false;
+        if (upScale == INKSIZE_MAX) isPut = false;
+    }
+    //-------------------------------------------------------------------------
+    //  空になった場合
+    //-------------------------------------------------------------------------
+    public void EmptyColor()
+    {
+        isEmpty = true;
+    }
+    void ColorEmptyMove()
+    {
+        //縮小
+        float downScale = inks[selectColor].localScale.x;
+        downScale = Mathf.Max(0, downScale - Time.deltaTime * 3);
+        inks[selectColor].localScale = new Vector3(downScale, downScale, downScale);
+
+        //Scaleを確認
+        if (downScale == 0) isEmpty = false;
     }
 }

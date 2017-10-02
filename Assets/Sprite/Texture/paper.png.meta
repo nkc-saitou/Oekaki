@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4777d92e2884a154f92fae91325101b6
-timeCreated: 1506905300
+guid: 8fcc5d818fe43b44c9d8a3de0c51cc50
+timeCreated: 1506915439
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: green_max_0
+    21300000: paper_0
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -35,7 +35,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -79,15 +79,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: green_max_0
+      name: paper_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 105
-        height: 94
+        x: 256
+        y: 256
+        width: 256
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

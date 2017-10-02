@@ -62,7 +62,7 @@ public class PixAcces : MonoBehaviour
                     //カウント確認
                     if (gageCount >= 512)
                     {
-                        colorGage.GageDown();
+                        //colorGage.GageDown();
                         gageCount = 0;
                     }
                 }
@@ -97,14 +97,5 @@ public class PixAcces : MonoBehaviour
         drawTexture.SetPixels(buffer);
         drawTexture.Apply();
         renderer.material.mainTexture = drawTexture;
-    }
-
-    //-------------------------------------------------------------------------
-    //  ゲージ回復確認用メソッド
-    //-------------------------------------------------------------------------
-    [ContextMenu("Heal")]
-    void Heal()
-    {
-        colorGage.GageHeal(Color.red, 20);
     }
 }

@@ -2,6 +2,14 @@
 
 namespace Es.InkPainter.Sample
 {
+    public enum PaintColor
+    {
+        Red = 0,
+        Green,
+        Blue,
+        Empty
+    }
+
 	public class MousePainter : MonoBehaviour
 	{
 		/// <summary>
@@ -22,17 +30,24 @@ namespace Es.InkPainter.Sample
 		[SerializeField]
 		private UseMethodType useMethodType = UseMethodType.RaycastHitInfo;
 
+        //ColorGage
+        [SerializeField]
+        ColorGage colorGage;
+
         //前回の位置
         Vector3 beforePos;
 
+        //使える色
+        Color[] useColor = { Color.red, Color.green, Color.blue };
+
         //ペン情報
         public static bool isBrushUse = true;
-        public static Color brushColor = Color.red;
+        public static PaintColor brushColor = PaintColor.Red;
         public static float brushScale = 0.1f;
 
         private void Update()
 		{
-            if (brushColor != brush.Color) brush.Color = brushColor;
+            if (useColor[(int)brushColor] != brush.Color) brush.Color = useColor[(int)brushColor];
             if (brushScale != brush.Scale) brush.Scale = brushScale;
 
 			if(isBrushUse && Input.GetMouseButton(0))
@@ -66,10 +81,13 @@ namespace Es.InkPainter.Sample
                                 break;
                         }
 
-                        //効果音(ペン)
-                        if (SoundCheck())
+                        //前回位置と違うならtrue
+                        if (PositionCheck())
                         {
                             beforePos = Input.mousePosition;
+                            //ゲージ減少
+                            colorGage.GageDown((int)brushColor, brushScale * 10);
+                            //効果音
                             SoundManager.instance.PlayBack_Pen();
                         }
                     }
@@ -92,9 +110,9 @@ namespace Es.InkPainter.Sample
         //-------------------------------------------------------------------------
         //  判断
         //-------------------------------------------------------------------------
-        bool SoundCheck()
+        bool PositionCheck()
         {
-            return Input.GetMouseButton(0) && Input.mousePosition != beforePos;
+            return Input.mousePosition != beforePos;
         }
     }
 }
