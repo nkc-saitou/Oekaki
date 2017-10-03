@@ -23,11 +23,11 @@ public class HappaController : MonoBehaviour {
 
     public GameObject flowerObj;
 
-    public int gageHeal;
+    //public int gageHeal;
 
-    public ColorGage colorGage;
+    //public ColorGage colorGage;
 
-    public PenData penDate;
+    //public PenData penDate;
 
     bool[] soundCheck = { true, true };
 

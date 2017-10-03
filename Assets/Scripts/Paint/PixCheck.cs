@@ -9,9 +9,12 @@ public class PixCheck : MonoBehaviour {
     //------------------------------------------------
     // private
     //------------------------------------------------
-    new Renderer renderer;
+    //Renderer renderer;
 
-    Texture2D mainTexture;
+    //Texture2D mainTexture;
+    Texture2D texture2D;
+    RenderTexture renderTexture;
+
     Color[] pixels;
 
     int whitePixels = 0; //現在の白ピクセル数を保存
@@ -21,7 +24,7 @@ public class PixCheck : MonoBehaviour {
     // プロパティ
     //------------------------------------------------
 
-    //全体の何パーセント塗れているかを渡すプロパティ
+        //全体の何パーセント塗れているかを渡すプロパティ
     public int PixelsPaint
     {
         get;
@@ -32,7 +35,7 @@ public class PixCheck : MonoBehaviour {
 
     void Start ()
     {
-        renderer = GetComponent<Renderer>();
+        //renderer = GetComponent<Renderer>();
         whitePixelsCheck();
         filstWhitePixels = whitePixels;
     }
@@ -54,16 +57,41 @@ public class PixCheck : MonoBehaviour {
     //------------------------------------------------
     void whitePixelsCheck()
     {
-        mainTexture = (Texture2D)renderer.material.mainTexture;
-        pixels = mainTexture.GetPixels();
+        //mainTexture = renderer.material.mainTexture as Texture2D;
+        //pixels = mainTexture.GetPixels();
 
-        int whiteCount = 0; //白ピクセル
+        //int whiteCount = 0; //白ピクセル
 
-        foreach (Color c in pixels)
+        //foreach (Color c in pixels)
+        //{
+        //    if (c == Color.white) whiteCount++;
+        //}
+
+        //whitePixels = whiteCount;
+
+        texture2D = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+        renderTexture = new RenderTexture(texture2D.width, texture2D.height, 24);
+
+        RenderTexture prev = Camera.main.targetTexture;
+        Camera.main.targetTexture = renderTexture;
+        Camera.main.Render();
+
+        RenderTexture.active = renderTexture;
+
+        texture2D.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+        texture2D.Apply();
+
+        Camera.main.targetTexture = prev;
+
+        Color[] color = texture2D.GetPixels();
+        int whiteCount = 0;
+
+        for(int i = 0; i< color.Length; i++)
         {
-            if (c == Color.white) whiteCount++;
+            if (color[i] == Color.white) whiteCount++;
         }
 
+        //Debug.Log(whiteCount);
         whitePixels = whiteCount;
     }
 
