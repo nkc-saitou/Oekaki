@@ -491,11 +491,21 @@ Prefab:
     - target: {fileID: 114060632799119390, guid: fb8c354a12262d345a07bf3f01450a02,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114504631282773428, guid: fb8c354a12262d345a07bf3f01450a02,
         type: 2}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114060632799119390, guid: fb8c354a12262d345a07bf3f01450a02,
+        type: 2}
+      propertyPath: dispCamera
+      value: 
+      objectReference: {fileID: 609828634}
+    - target: {fileID: 64566631881221548, guid: fb8c354a12262d345a07bf3f01450a02,
+        type: 2}
+      propertyPath: m_Convex
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
