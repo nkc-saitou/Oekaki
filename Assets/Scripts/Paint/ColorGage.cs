@@ -47,7 +47,7 @@ public class ColorGage : MonoBehaviour
     {
         //ゲージ変動
         Vector2 size = gages[color].sizeDelta;
-        size.x = Mathf.Max(0, size.x - (2 * Time.deltaTime * scale));
+        size.x = Mathf.Max(0, size.x - (Time.deltaTime * scale));
         gages[color].sizeDelta = size;
 
         //空になったら

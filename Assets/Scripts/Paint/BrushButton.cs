@@ -49,14 +49,14 @@ public class BrushButton : MonoBehaviour
         brushs[beforeNo].localPosition = movePosFront;
 
         //確認
-        if (moveSum >= MOVEMENT) isMove = false;
+        if (moveSum >= MOVEMENT - 1) isMove = false;
     }
     //-------------------------------------------------------------------------
     //  筆を変更
     //-------------------------------------------------------------------------
     public void ChangeBrush(int brushNo)
     {
-        if (Time.timeScale <= 0) return;
+        if (Time.timeScale <= 0 || isMove) return;
         //番号
         beforeNo = selectNo;
         selectNo = brushNo;

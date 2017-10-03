@@ -303,7 +303,7 @@ namespace Es.InkPainter
 		/// <summary>
 		/// Creates a rendertexture and set the material.
 		/// </summary>
-		private void SetRenderTexture()
+		private void SetRenderTexture() //最初に呼ばれRenderTextureを設定している？
 		{
 			foreach(var p in paintSet)
 			{
@@ -498,7 +498,7 @@ namespace Es.InkPainter
 		/// <param name="brush">Brush data.</param>
 		/// <param name="uv">UV coordinates for the hit location.</param>
 		/// <returns>The success or failure of the paint.</returns>
-		public bool PaintUVDirect(Brush brush, Vector2 uv)
+		public bool PaintUVDirect(Brush brush, Vector2 uv)  //書くたびに呼ばれている
 		{
 			#region ErrorCheck
 
@@ -518,7 +518,7 @@ namespace Es.InkPainter
 
 			foreach(var p in paintSet)
 			{
-				if(p.useMainPaint && brush.BrushTexture != null && p.paintMainTexture != null && p.paintMainTexture.IsCreated())    //書いてる？
+                if (p.useMainPaint && brush.BrushTexture != null && p.paintMainTexture != null && p.paintMainTexture.IsCreated())    //書いてる？
 				{
                     var mainPaintTextureBuffer = RenderTexture.GetTemporary(p.paintMainTexture.width, p.paintMainTexture.height, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.Linear);
                     SetPaintMainData(brush, uv);

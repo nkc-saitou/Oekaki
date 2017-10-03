@@ -63,7 +63,7 @@ public class PixCam : MonoBehaviour
         if (Input.GetButtonUp("Fire1"))
         {
             camPixels = GetPixels();
-            //Debug.Log("グレースケールピクセルの数" + camPixels);
+            Debug.Log("グレースケールピクセルの数" + camPixels);
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Es.InkPainter.Sample
 		private UseMethodType useMethodType = UseMethodType.RaycastHitInfo;
 
         //ColorGage
-        [SerializeField]
+        [SerializeField, Space]
         ColorGage colorGage;
 
         //前回の位置
@@ -58,6 +58,10 @@ namespace Es.InkPainter.Sample
 				if(Physics.Raycast(ray, out hitInfo))
 				{
 					var paintObject = hitInfo.transform.GetComponent<InkCanvas>();
+                    //BrushのScaleを調整
+                    if (hitInfo.transform.localScale.x != 1.0f)
+                        brush.Scale = brushScale * (hitInfo.transform.localScale.x * 0.5f);
+
 					if(paintObject != null)
                     {
                         switch (useMethodType)
