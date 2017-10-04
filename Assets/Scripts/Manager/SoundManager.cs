@@ -59,6 +59,8 @@ public class SoundManager : MonoBehaviour
     AudioSource[] seSource = new AudioSource[3];
     AudioSource penSource;
 
+    int countSE = 0;
+
     //-------------------------------------------------------------------------
     //  音再生
     //-------------------------------------------------------------------------
@@ -70,16 +72,10 @@ public class SoundManager : MonoBehaviour
 
     public void PlayBack_SE(SE sound)
     {
-        foreach(AudioSource audio in seSource)
-        {
-            if(!audio.isPlaying)
-            {
-                audio.clip = seSound[(int)sound];
-                audio.Play();
+        seSource[countSE].clip = seSound[(int)sound];
+        seSource[countSE].Play();
 
-                break;
-            }
-        }
+        countSE = (int)Mathf.Repeat(countSE + 1, seSource.Length);
     }
 
     public void PlayBack_Pen()
@@ -101,6 +97,7 @@ public class SoundManager : MonoBehaviour
         Car = 0,
         Leaf,
         Ink,
+        TransitionPen,
         Clear,
         GameOver
     }

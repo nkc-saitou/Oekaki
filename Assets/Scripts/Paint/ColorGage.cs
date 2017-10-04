@@ -14,6 +14,10 @@ public class ColorGage : MonoBehaviour
     //  Private
     //-------------------------------------------------------------------------
 
+    //Titleフラグ
+    [SerializeField]
+    bool titleFlg;
+
     [SerializeField]
     GameObject gameOverImage;
     [SerializeField, Space]
@@ -38,13 +42,16 @@ public class ColorGage : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        gameOverImage.SetActive(false);
+        
+        if(gameOverImage != null)
+            gameOverImage.SetActive(false);
     }
     //-------------------------------------------------------------------------
     //  ゲージ減少
     //-------------------------------------------------------------------------
     public void GageDown(int color, float scale)
     {
+        if (titleFlg) return;
         //ゲージ変動
         Vector2 size = gages[color].sizeDelta;
         size.x = Mathf.Max(0, size.x - (Time.deltaTime * scale));

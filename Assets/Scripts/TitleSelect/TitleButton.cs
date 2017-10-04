@@ -15,7 +15,7 @@ public class TitleButton : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(0))
         {
-            SceneOption.Instance.LoadScene("SelectScene", 1);
+            SceneOption.Instance.LoadScene("SelectScene");
         }
 
     }
