@@ -86,6 +86,8 @@ public class PixCheck : MonoBehaviour {
         Color[] color = texture2D.GetPixels();
         int whiteCount = 0;
 
+        Debug.Log(color.Length);
+
         for(int i = 0; i< color.Length; i++)
         {
             if (color[i] == Color.white) whiteCount++;
