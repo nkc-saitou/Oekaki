@@ -26,7 +26,11 @@ public class BrushButton : MonoBehaviour
     float moveSum = 0;
 
     //=========================================================================
-	void Update ()
+    void Start()
+    {
+        MousePainter.brushScale = 0.1f;
+    }
+    void Update ()
     {
         //動作
         if (isMove) BrushMove();
