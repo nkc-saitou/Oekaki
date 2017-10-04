@@ -30,15 +30,15 @@ public class SceneButton : MonoBehaviour {
         switch (sceneType)
         {
             case SceneType.stage1:
-                SceneOption.Instance.LoadScene("GameScene_01", 1);
+                SceneOption.Instance.LoadScene("GameScene_01");
                 break;
 
             case SceneType.stage2:
-                SceneOption.Instance.LoadScene("GameScene_02", 1);
+                SceneOption.Instance.LoadScene("GameScene_02");
                 break;
 
             case SceneType.stage3:
-                SceneOption.Instance.LoadScene("GameScene_03", 1);
+                SceneOption.Instance.LoadScene("GameScene_03");
                 break;
         }
 
