@@ -1,12 +1,10 @@
 fileFormatVersion: 2
-guid: 621adead345e48240af54e353e1b6d8f
-timeCreated: 1507085336
+guid: dd69d78bfb5597a40b7ade6362765549
+timeCreated: 1507111862
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences:
-  - GameOverImg: {fileID: 21300000, guid: b9d6eb071e3e2ee4296ffb9bd5b7ac08, type: 3}
-  - stageSelect: {fileID: 21300000, guid: 501c0f37bd1575540aa1047c212bfa08, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
