@@ -26,7 +26,11 @@ public class BrushButton : MonoBehaviour
     float moveSum = 0;
 
     //=========================================================================
-	void Update ()
+    void Start()
+    {
+        MousePainter.brushScale = 0.1f;
+    }
+    void Update ()
     {
         //動作
         if (isMove) BrushMove();
@@ -49,13 +53,14 @@ public class BrushButton : MonoBehaviour
         brushs[beforeNo].localPosition = movePosFront;
 
         //確認
-        if (moveSum >= MOVEMENT) isMove = false;
+        if (moveSum >= MOVEMENT - 1) isMove = false;
     }
     //-------------------------------------------------------------------------
     //  筆を変更
     //-------------------------------------------------------------------------
     public void ChangeBrush(int brushNo)
     {
+        if (Time.timeScale <= 0 || isMove) return;
         //番号
         beforeNo = selectNo;
         selectNo = brushNo;

@@ -23,11 +23,11 @@ public class HappaController : MonoBehaviour {
 
     public GameObject flowerObj;
 
-    public int gageHeal;
+    //public int gageHeal;
 
-    public ColorGage colorGage;
+    //public ColorGage colorGage;
 
-    public PenData penDate;
+    //public PenData penDate;
 
     bool[] soundCheck = { true, true };
 
@@ -71,8 +71,8 @@ public class HappaController : MonoBehaviour {
 
             flowerObj.SetActive(true);
 
-            int colorRandom = Random.Range(0, penDate.colorArr.Length);
-            colorGage.GageHeal(penDate.colorArr[colorRandom], gageHeal);
+            //int colorRandom = Random.Range(0, penDate.colorArr.Length);
+            //colorGage.GageHeal(penDate.colorArr[colorRandom], gageHeal);
 
             gageHealFlg = false;
 
