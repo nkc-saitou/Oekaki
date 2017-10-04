@@ -16,19 +16,30 @@ public class BaseGimmick : MonoBehaviour {
     //------------------------------------------
 
     [SerializeField]
-    SoundManager.SE gimmickSE;
+    protected SoundManager.SE gimmickSE;
 
     PixCheck pixCheck;
 
     int pixelsPaint = 0; //どれだけ塗れたかのパーセンテージ
 
-    Vector3 objPos;
+    protected Vector3 objPos;
 
-    protected int GimmickAct = 70;
+    protected int gimmickAct = 70;
 
-    void Start()
+    bool actFlg = false;
+
+    enum ColorState
     {
-        pixCheck = GetComponent<PixCheck>();
+        one,
+        two,
+        three
+    }
+
+    ColorState colorState;
+
+    protected void Start()
+    {
+        pixCheck = gameObject.GetComponent<PixCheck>();
         objPos = transform.localPosition;
     }
 
@@ -48,7 +59,7 @@ public class BaseGimmick : MonoBehaviour {
         //}
 
         ShakeSprite();
-        MoveSprite();
+        if(!Input.GetMouseButton(0)) MoveSprite();
     }
 
     //--------------------------------------------------------
@@ -57,7 +68,7 @@ public class BaseGimmick : MonoBehaviour {
     void ShakeSprite()
     {
         //一定以上塗れている、または一定以上塗れていない場合、以下の処理をしない
-        if (pixelsPaint < 5 || pixelsPaint >= GimmickAct) return;
+        if (pixelsPaint < 5 || pixelsPaint >= gimmickAct) return;
 
         gameObject.transform.localPosition = new Vector3(objPos.x+Mathf.Sin(Time.time*100) * shakeX,transform.localPosition.y, transform.localPosition.z);
     }
@@ -67,41 +78,63 @@ public class BaseGimmick : MonoBehaviour {
     //--------------------------------------------------------
     void MoveSprite()
     {
-        BorderSetting();
-
         //一定以上塗れていない場合、ギミックの処理を実行しない
-        if (pixelsPaint < GimmickAct) return;
+        if (pixelsPaint < gimmickAct) return;
 
-        GimmickActivate();
+        ColorPaintKind();
+    }
+
+    //--------------------------------------------------------
+    //　塗られている色の種類を調べ、それぞれの挙動を実行させるメソッド
+    //--------------------------------------------------------
+    void ColorPaintKind()
+    {
+        bool filstFlg = false;
+
+        if (filstFlg) return;
+
+        //int paintKind = 0;
+
+        //if (pixCheck.RedFlg) paintKind++;
+        //if (pixCheck.GreenFlg) paintKind++;
+        //if (pixCheck.BlueFlg) paintKind++;
+
+        //switch(paintKind)
+        //{
+        //    case 1:
+        //        OneActivate();
+        //        break;
+
+        //    case 2:
+        //        TwoActivate();
+        //        break;
+
+        //    case 3:
+        //        ThreeActivate();
+        //        break;
+        //}
+        OneActivate();
+        filstFlg = true;
     }
 
     //--------------------------------------------------------
     //　どんなギミックが発動するか
     //--------------------------------------------------------
-    public virtual void GimmickActivate()
+    public virtual void OneActivate()
     {
-        //オブジェクトを動かす
-        float dx = 0;
-        float speed = 15.0f;
-        float border = -20;
+        //処理継承先で書く
 
-        objPos = gameObject.transform.localPosition;
-        dx -= speed * Time.deltaTime;
-        objPos.x += dx;
-        gameObject.transform.localPosition = objPos;
-
-        //border以上動いたらオブジェクトを削除する
-        if (objPos.x < border)
-        {
-            Destroy(gameObject);
-        }
-
-        //音再生
-        SoundManager.instance.PlayBack_SE(gimmickSE);
     }
 
-    public virtual void BorderSetting()
+    public virtual void TwoActivate()
     {
-        GimmickAct = 70;
+        //処理継承先で書く
+
+    }
+
+    public virtual void ThreeActivate()
+    {
+        //処理継承先で書く
+
     }
 }

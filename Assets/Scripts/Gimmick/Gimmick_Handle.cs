@@ -11,7 +11,13 @@ public class Gimmick_Handle : BaseGimmick
     Vector3 HandlePos;
     float speed = 1.5f;
 
-    public override void GimmickActivate()
+    void Start()
+    {
+        base.Start();
+        gimmickAct = 20;
+    }
+
+    public override void OneActivate()
     {
         if (Handle.transform.position.y >= HANDLE_BORDER) return;
 
@@ -20,10 +26,5 @@ public class Gimmick_Handle : BaseGimmick
         HandlePos = Handle.transform.position;
         HandlePos.y += speed * Time.deltaTime;
         Handle.transform.position = HandlePos;
-    }
-
-    public override void BorderSetting()
-    {
-        GimmickAct = 20;
     }
 }

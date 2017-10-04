@@ -9,7 +9,7 @@ public class PixCheck : MonoBehaviour {
     //------------------------------------------------
     // private
     //------------------------------------------------
-    //Renderer renderer;
+    Renderer renderer;
 
     //Texture2D mainTexture;
     Texture2D texture2D;
@@ -35,7 +35,7 @@ public class PixCheck : MonoBehaviour {
 
     void Start ()
     {
-        //renderer = GetComponent<Renderer>();
+        renderer = GetComponent<Renderer>();
         whitePixelsCheck();
         filstWhitePixels = whitePixels;
     }
@@ -69,7 +69,7 @@ public class PixCheck : MonoBehaviour {
 
         //whitePixels = whiteCount;
 
-        texture2D = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+        texture2D = new Texture2D(renderer.material.mainTexture.width, renderer.material.mainTexture.height, TextureFormat.RGB24, false);
         renderTexture = new RenderTexture(texture2D.width, texture2D.height, 24);
 
         RenderTexture prev = Camera.main.targetTexture;
@@ -78,7 +78,7 @@ public class PixCheck : MonoBehaviour {
 
         RenderTexture.active = renderTexture;
 
-        texture2D.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+        texture2D.ReadPixels(new Rect(0, 0, renderer.material.mainTexture.width, renderer.material.mainTexture.height), 0, 0);
         texture2D.Apply();
 
         Camera.main.targetTexture = prev;
@@ -91,7 +91,7 @@ public class PixCheck : MonoBehaviour {
             if (color[i] == Color.white) whiteCount++;
         }
 
-        //Debug.Log(whiteCount);
+        Debug.Log(whiteCount);
         whitePixels = whiteCount;
     }
 
