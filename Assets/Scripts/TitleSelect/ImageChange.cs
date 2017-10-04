@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-[AddComponentMenu("Scripts/TitleSelect/Select/ImageChange")]
+
 public class ImageChange : MonoBehaviour
 {
     public SpriteRenderer stageSelectRenderer;
