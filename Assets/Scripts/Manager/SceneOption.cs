@@ -57,11 +57,19 @@ public class SceneOption : MonoBehaviour {
     /// シーン遷移 .
     /// </summary>
     /// <param name='scene'>シーン名</param>
-    public void TransitionScene(string scene)
+    public void TransitionScene(string scene,float waitTime = 0)
     {
+        StartCoroutine(TransitionWaitTime(scene, waitTime));
+    }
+
+    IEnumerator TransitionWaitTime(string scene, float waitTime = 0)
+    {
+        yield return new WaitForSeconds(waitTime);
+
         //生成
         TransitionAnim transitionObj = Instantiate(transitionPre);
         transitionObj.SetNextSceneName(scene);
+
     }
 
     /// <summary>

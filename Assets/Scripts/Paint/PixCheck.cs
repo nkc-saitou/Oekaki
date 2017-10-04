@@ -15,6 +15,8 @@ public class PixCheck : MonoBehaviour {
     Texture2D texture2D;
     RenderTexture renderTexture;
 
+    public Camera rendererCam;
+
     Color[] pixels;
 
     int whitePixels = 0; //現在の白ピクセル数を保存
@@ -72,16 +74,16 @@ public class PixCheck : MonoBehaviour {
         texture2D = new Texture2D(renderer.material.mainTexture.width, renderer.material.mainTexture.height, TextureFormat.RGB24, false);
         renderTexture = new RenderTexture(texture2D.width, texture2D.height, 24);
 
-        RenderTexture prev = Camera.main.targetTexture;
-        Camera.main.targetTexture = renderTexture;
-        Camera.main.Render();
+        RenderTexture prev = rendererCam.targetTexture;
+        rendererCam.targetTexture = renderTexture;
+        rendererCam.Render();
 
         RenderTexture.active = renderTexture;
 
         texture2D.ReadPixels(new Rect(0, 0, renderer.material.mainTexture.width, renderer.material.mainTexture.height), 0, 0);
         texture2D.Apply();
 
-        Camera.main.targetTexture = prev;
+        rendererCam.targetTexture = prev;
 
         Color[] color = texture2D.GetPixels();
         int whiteCount = 0;

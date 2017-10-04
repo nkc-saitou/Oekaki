@@ -88,11 +88,13 @@ public class ColorGage : MonoBehaviour
     //-------------------------------------------------------------------------
     void GameOver()
     {
-        Debug.Log("GameOver");
-        return;
+        //Debug.Log("GameOver");
+        //return;
 
         if (GameManager.instance.ClearFlg) return;
         //ゲームオーバーイメージの表示
+
+        SceneOption.Instance.TransitionScene("SelectScene",1.0f);
         GameManager.instance.GameOver();
         gameOverImage.SetActive(true);
     }
@@ -126,7 +128,7 @@ public class ColorGage : MonoBehaviour
         animator.SetTrigger(trigger);
     }
     public void EnterTube() { flg = true; }
-    public void ExitTube() { flg = false; }
+    public void ExitTzube() { flg = false; }
 
     //-------------------------------------------------------------------------
     //  Animation
@@ -148,6 +150,26 @@ public class ColorGage : MonoBehaviour
         //トリガーをリセット
         ResetTrigger();
     }
+
+    //----------------------------------------------------------------------------
+    //　＼　　　　　　　　　　　　　　　　　　　　/
+    //　　 ＼　　丶　　　　 　 i.　　 |　　　　　 /　　 　 ./　　　　 　 ／
+    //　　　　＼　　ヽ　　　　　i. 　 .|　　　　　/　　　 /　　　　　 ／
+    //　　　　　 ＼　　ヽ　　　　i　　|　　　　 /　　　/　　　　　／
+    //　　　＼
+    //　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　-‐
+    //　　ー
+    //　_＿　　　　　　　　　　わ　た　し　で　す　　　　　　　　　　　　--
+    //　　　　　二　　　　　　　 　　／￣＼　　　　　　　　　　　＝　二
+    //　　￣　　　　　　　　　　　　|＾o＾ |　　　　　　　　　　　　　　　　￣
+    //　　　　-‐　　　　　　　　　  ＼＿／ 　　　　　　　　　　　　　　　‐-
+    //
+    //　　　　／
+    //　　　　　　　　　　　　/　　　　　　　　　　　　　　　ヽ　　　　　 ＼
+    //　　　　／　　　　　　　　　　　　　　　　　　　　丶　　　　 ＼
+    //　　 ／　　　/　　　 /　　　　　　|　　　i,　　　 　 丶　　　　　＼
+    //　／　　　 /　　　　/　　　　　　 |　　　 i,　　　　　　丶　　　　　＼
+    //----------------------------------------------------------------------------
     public void ResetTrigger()
     {
         for (int i = 0; i < parametars.Length; i++)
