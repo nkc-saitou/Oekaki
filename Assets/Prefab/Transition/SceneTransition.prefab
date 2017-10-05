@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4095695279974380}
   - component: {fileID: 212603359558027824}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Trail_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4957505672468018}
   - component: {fileID: 212335873778540456}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Trail_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4040359067462944}
   - component: {fileID: 212683069566253744}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Trail_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4392398002879390}
   - component: {fileID: 212300791106184168}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Trail_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4624766058564636}
   - component: {fileID: 212006568734773980}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Trail_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 4331071246650722}
   - component: {fileID: 95441078961174374}
   - component: {fileID: 114113439011183284}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SceneTransition
   m_TagString: Untagged
   m_Icon: {fileID: 0}

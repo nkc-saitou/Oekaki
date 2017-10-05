@@ -25,7 +25,7 @@ public class HappaController : MonoBehaviour {
 
     //public int gageHeal;
 
-    //public ColorGage colorGage;
+    public ColorGage colorGage;
 
     //public PenData penDate;
 
@@ -71,8 +71,8 @@ public class HappaController : MonoBehaviour {
 
             flowerObj.SetActive(true);
 
-            //int colorRandom = Random.Range(0, penDate.colorArr.Length);
-            //colorGage.GageHeal(penDate.colorArr[colorRandom], gageHeal);
+            //int colorRandom = Random.Range(0, 3);
+            colorGage.GageHeal(0);
 
             gageHealFlg = false;
 

@@ -5,7 +5,7 @@ using UnityEngine;
 [AddComponentMenu("Scripts/Gimmick/Gimmick_Handle")]
 public class Gimmick_Handle : BaseGimmick
 {
-    const float HANDLE_BORDER = 7.0f;
+    const float HANDLE_BORDER = 7.5f;
 
     public GameObject Handle;
     Vector3 HandlePos;

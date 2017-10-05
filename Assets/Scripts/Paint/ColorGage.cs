@@ -32,6 +32,7 @@ public class ColorGage : MonoBehaviour
 
     //選択中の色
     PaintColor selectTube = PaintColor.Red;
+    PaintColor pushTube;
 
     //ポインターがボタン上にあるかどうか
     bool flg = false;
@@ -88,9 +89,6 @@ public class ColorGage : MonoBehaviour
     //-------------------------------------------------------------------------
     void GameOver()
     {
-        //Debug.Log("GameOver");
-        //return;
-
         if (GameManager.instance.ClearFlg) return;
         //ゲームオーバーイメージの表示
 

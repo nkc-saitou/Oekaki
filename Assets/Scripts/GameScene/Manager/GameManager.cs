@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
 
     bool waitFlg = false;
 
+    bool stopFlg = false;
+
     //-------------------------------------------------------------------------
     // プロパティ
     //-------------------------------------------------------------------------
@@ -49,13 +51,6 @@ public class GameManager : MonoBehaviour
     {
         if (clearFlg == false && gameOverFlg == false) return;
         if (waitFlg) return;
-
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    //SceneOption.Instance.LoadScene("SelectScene");
-        //    //BGM切り替え
-        //    SoundManager.instance.PlayBack_BGM(SoundManager.BGM.TitleSelect);
-        //}
     }
 
     //-------------------------------------------------------------------------
@@ -83,7 +78,14 @@ public class GameManager : MonoBehaviour
     {
         clearFlg = false;
         gameOverFlg = false;
-        //TouchManager.instance.IsTouch(true);
+    }
+    public void ButtonStop(bool flg)
+    {
+        stopFlg = flg;
+    }
+    public bool StopFlg()
+    {
+        return stopFlg;
     }
     //-------------------------------------------------------------------------
     //  Wait

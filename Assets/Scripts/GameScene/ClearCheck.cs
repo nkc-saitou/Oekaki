@@ -17,6 +17,7 @@ public class ClearCheck : MonoBehaviour
     //=========================================================================
     void Start()
     {
+        GameManager.instance.GameSet();
         //クリア画像を非表示
         clearImage.SetActive(false);
 
