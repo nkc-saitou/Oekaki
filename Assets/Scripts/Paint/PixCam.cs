@@ -11,16 +11,11 @@ public class PixCam : MonoBehaviour
     int camPixels = 0;
     int filstCamPixels = 0;
 
-    public int FilstCamPixels
+    //全体の何パーセント塗れているかを渡すプロパティ
+    public int PixelsPaint
     {
-        get { return filstCamPixels; }
-        set { filstCamPixels = value; }
-    }
-
-    public int CamPixels
-    {
-        get { return camPixels; }
-        set { camPixels = value; }
+        get;
+        set;
     }
 
     int GetPixels()
@@ -63,7 +58,22 @@ public class PixCam : MonoBehaviour
         if (Input.GetButtonUp("Fire1"))
         {
             camPixels = GetPixels();
-            //Debug.Log("グレースケールピクセルの数" + camPixels);
+            PixPaint();
+            //Debug.Log("グレースケールピクセルの数" + PixelsPaint);
         }
+    }
+
+    //------------------------------------------------
+    // 全体の何パーセント塗れたかを調べるメソッド
+    //------------------------------------------------
+    void PixPaint()
+    {
+        //パーセンテージを計算
+        float p = 0;
+
+        //整数同士の割り算は整数になるので、float型で計算
+        p = (float)camPixels / (float)filstCamPixels * 100;
+
+        PixelsPaint = 100 - Mathf.FloorToInt(p);
     }
 }

@@ -93,7 +93,7 @@ public class PixCheck : MonoBehaviour {
             if (color[i] == Color.white) whiteCount++;
         }
 
-        Debug.Log(whiteCount);
+        //Debug.Log(whiteCount);
         whitePixels = whiteCount;
     }
 

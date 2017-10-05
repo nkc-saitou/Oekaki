@@ -94,7 +94,7 @@ public class ColorGage : MonoBehaviour
         if (GameManager.instance.ClearFlg) return;
         //ゲームオーバーイメージの表示
 
-        SceneOption.Instance.TransitionScene("SelectScene",1.0f);
+        SceneOption.Instance.TransitionScene("SelectScene",2.0f);
         GameManager.instance.GameOver();
         gameOverImage.SetActive(true);
     }

@@ -12,7 +12,7 @@ public class ClearCheck : MonoBehaviour
     [SerializeField]
     GameObject clearImage;
 
-    PixCheck pixCheck;
+    PixCam pixCam;
 
     //=========================================================================
     void Start()
@@ -20,7 +20,7 @@ public class ClearCheck : MonoBehaviour
         //クリア画像を非表示
         clearImage.SetActive(false);
 
-        pixCheck = GetComponent<PixCheck>();
+        pixCam = GetComponent<PixCam>();
     }
 
     void Update()
@@ -36,10 +36,11 @@ public class ClearCheck : MonoBehaviour
     //-------------------------------------------------------------------------
     bool IsClear()
     {
-        return pixCheck.PixelsPaint >= 90;
+        return pixCam.PixelsPaint >= 90;
     }
     void Clear()
     {
+        SceneOption.Instance.TransitionScene("SelectScene", 2.0f);
         GameManager.instance.Clear();
         clearImage.SetActive(true);
     }

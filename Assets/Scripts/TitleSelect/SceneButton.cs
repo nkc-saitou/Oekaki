@@ -15,7 +15,8 @@ public class SceneButton : MonoBehaviour {
     public SceneType sceneType;
 
 
-	void Start () {
+	void Start ()
+    {
 		
 	}
 	
@@ -41,7 +42,6 @@ public class SceneButton : MonoBehaviour {
                 SceneOption.Instance.LoadScene("GameScene_03");
                 break;
         }
-
         //BGM切り替え
         SoundManager.instance.PlayBack_BGM(SoundManager.BGM.Game);
     }
