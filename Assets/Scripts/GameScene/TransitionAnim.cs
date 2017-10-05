@@ -12,6 +12,7 @@ public class TransitionAnim : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        GameManager.instance.ButtonStop(true);
     }
 
     //-------------------------------------------------------------------------
@@ -38,6 +39,7 @@ public class TransitionAnim : MonoBehaviour
     public void FinishAnim()
     {
         //準備
+        GameManager.instance.ButtonStop(false);
         MousePainter.isBrushUse = true;
         //削除
         Destroy(this.gameObject);

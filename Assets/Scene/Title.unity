@@ -543,29 +543,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4632505995955788, guid: 5ebdb8d37ea6c1d40b5b81605d267ac3,
     type: 2}
   m_PrefabInternal: {fileID: 2002673177}
---- !u!1 &2002673179 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1423916966725562, guid: 5ebdb8d37ea6c1d40b5b81605d267ac3,
-    type: 2}
-  m_PrefabInternal: {fileID: 2002673177}
---- !u!114 &2002673180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2002673179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04cc1b9412eea6e4a8798f4b2f88b4ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  paintSet:
-  - mainTextureName: _MainTex
-    normalTextureName: _BumpMap
-    heightTextureName: _ParallaxMap
-    useMainPaint: 1
-    useNormalPaint: 1
-    useHeightPaint: 0
 --- !u!1001 &2058231938
 Prefab:
   m_ObjectHideFlags: 0
@@ -672,6 +649,21 @@ Prefab:
         type: 2}
       propertyPath: titleFlg
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224478464847148110, guid: c059f8a0a7a6d72448395bb1d02f074f,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 224273098495445150, guid: c059f8a0a7a6d72448395bb1d02f074f,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 224675182195241718, guid: c059f8a0a7a6d72448395bb1d02f074f,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 42
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c059f8a0a7a6d72448395bb1d02f074f, type: 2}

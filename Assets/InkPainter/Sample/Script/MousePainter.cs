@@ -45,6 +45,11 @@ namespace Es.InkPainter.Sample
         public static PaintColor brushColor = PaintColor.Red;
         public static float brushScale = 0.1f;
 
+        private void Start()
+        {
+            brushColor = PaintColor.Red;
+        }
+
         private void Update()
 		{
             if (useColor[(int)brushColor] != brush.Color) brush.Color = useColor[(int)brushColor];

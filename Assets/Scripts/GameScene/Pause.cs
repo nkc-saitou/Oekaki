@@ -26,6 +26,8 @@ public class Pause : MonoBehaviour
     //-------------------------------------------------------------------------
     public void PauseButton()
     {
+        if (GameManager.instance.StopFlg()) return;
+
         //切り替え
         MousePainter.isBrushUse = isPause;
         isPause = !isPause;

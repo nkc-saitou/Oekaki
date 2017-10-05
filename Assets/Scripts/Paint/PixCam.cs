@@ -8,6 +8,8 @@ public class PixCam : MonoBehaviour
     Texture2D texture2D;
     RenderTexture renderTexture;
 
+    Camera rendererCam;
+
     int camPixels = 0;
     int filstCamPixels = 0;
 
@@ -23,9 +25,9 @@ public class PixCam : MonoBehaviour
         texture2D = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
         renderTexture = new RenderTexture(texture2D.width, texture2D.height, 24);
 
-        RenderTexture prev = Camera.main.targetTexture;
-        Camera.main.targetTexture = renderTexture;
-        Camera.main.Render();
+        RenderTexture prev = rendererCam.targetTexture;
+        rendererCam.targetTexture = renderTexture;
+        rendererCam.Render();
 
         RenderTexture.active = renderTexture;
 
@@ -33,7 +35,7 @@ public class PixCam : MonoBehaviour
         texture2D.Apply();
 
         //使い終わったら戻してあげる
-        Camera.main.targetTexture = prev;
+        rendererCam.targetTexture = prev;
 
         Color[] color = texture2D.GetPixels();
         int count = 0;
@@ -49,6 +51,8 @@ public class PixCam : MonoBehaviour
 
     void Start()
     {
+        rendererCam = GetComponent<Camera>();
+
         filstCamPixels = GetPixels();
         camPixels = GetPixels();
     }
@@ -59,7 +63,7 @@ public class PixCam : MonoBehaviour
         {
             camPixels = GetPixels();
             PixPaint();
-            //Debug.Log("グレースケールピクセルの数" + PixelsPaint);
+            Debug.Log("グレースケールピクセルの数" + PixelsPaint);
         }
     }
 
