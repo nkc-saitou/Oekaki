@@ -21,7 +21,7 @@ public class Gimmick_Handle : BaseGimmick
     {
         if (Handle.transform.position.y >= HANDLE_BORDER) return;
 
-        transform.Rotate(new Vector3(0, 0, 2));
+        transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, 2));
 
         HandlePos = Handle.transform.position;
         HandlePos.y += speed * Time.deltaTime;
