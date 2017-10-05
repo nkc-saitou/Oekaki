@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class ImageChange : MonoBehaviour
 {
-    public SpriteRenderer stageSelectRenderer;
+    public Image stageSelectImg;
 
     public Sprite[] picture;
     //リスト
@@ -18,10 +18,10 @@ public class ImageChange : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < 10; i++)
-        {
-            myList.Add(i);
-        }
+        //for (int i = 0; i < 10; i++)
+        //{
+        //    myList.Add(i);
+        //}
     }
 
     void Update()
@@ -36,6 +36,6 @@ public class ImageChange : MonoBehaviour
         pictureNum = (int)Mathf.Repeat(pictureNum + num, picture.Length);
 
         //ボタンをおされたらspriteを変更
-        stageSelectRenderer.sprite = picture[pictureNum];
+        stageSelectImg.sprite = picture[pictureNum];
     }
 }

@@ -50,12 +50,12 @@ public class GameManager : MonoBehaviour
         if (clearFlg == false && gameOverFlg == false) return;
         if (waitFlg) return;
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            //SceneOption.Instance.LoadScene("SelectScene");
-            //BGM切り替え
-            SoundManager.instance.PlayBack_BGM(SoundManager.BGM.TitleSelect);
-        }
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    //SceneOption.Instance.LoadScene("SelectScene");
+        //    //BGM切り替え
+        //    SoundManager.instance.PlayBack_BGM(SoundManager.BGM.TitleSelect);
+        //}
     }
 
     //-------------------------------------------------------------------------
@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
         clearFlg = true;
         //音再生
         SoundManager.instance.PlayBack_SE(SoundManager.SE.Clear);
+        StartCoroutine(WaitTime(2.0f));
     }
     public void GameOver()
     {
@@ -92,5 +93,6 @@ public class GameManager : MonoBehaviour
         waitFlg = true;
         yield return new WaitForSeconds(time);
         waitFlg = false;
+        SoundManager.instance.PlayBack_BGM(SoundManager.BGM.TitleSelect);
     }
 }
