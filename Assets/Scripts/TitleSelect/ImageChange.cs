@@ -38,4 +38,10 @@ public class ImageChange : MonoBehaviour
         //ボタンをおされたらspriteを変更
         stageSelectImg.sprite = picture[pictureNum];
     }
+
+    public void SelectButton()
+    {
+        string nextScene = "GameScene_0" + (pictureNum + 1).ToString();
+        SceneOption.Instance.TransitionScene(nextScene);
+    }
 }
