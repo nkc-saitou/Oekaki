@@ -45,6 +45,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Pause
+    uniqueID: 3082162039
+    locked: 0
   - name: Transition
     uniqueID: 2901260233
     locked: 0
