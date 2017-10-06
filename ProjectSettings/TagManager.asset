@@ -48,6 +48,9 @@ TagManager:
   - name: Pause
     uniqueID: 3082162039
     locked: 0
+  - name: Logo
+    uniqueID: 1245401913
+    locked: 0
   - name: Transition
     uniqueID: 2901260233
     locked: 0

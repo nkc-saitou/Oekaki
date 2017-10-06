@@ -156,6 +156,20 @@ Prefab:
       propertyPath: m_Name
       value: Soil
       objectReference: {fileID: 0}
+    - target: {fileID: 1435658994087510, guid: 8bc22ba89e1b75746b76eeb163a9b25a, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 33837765482344184, guid: 8bc22ba89e1b75746b76eeb163a9b25a,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 884faa9958344d244869f119609df933, type: 3}
+    - target: {fileID: 64427565208974892, guid: 8bc22ba89e1b75746b76eeb163a9b25a,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 884faa9958344d244869f119609df933, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8bc22ba89e1b75746b76eeb163a9b25a, type: 2}
   m_IsPrefabParent: 0
@@ -1358,8 +1372,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1245401913
+  m_SortingLayer: 2
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 56c0988ae3c07ea46a97910faf60717d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1380,7 +1394,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1251397575
 GameObject:
@@ -1871,8 +1885,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1245401913
+  m_SortingLayer: 2
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 301d20ed0d653a444a5925a3e33f106a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1893,7 +1907,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1801921030
 GameObject:
